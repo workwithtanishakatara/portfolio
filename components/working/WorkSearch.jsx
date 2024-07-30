@@ -169,12 +169,16 @@ export const Card = ({ work }) => {
         {/* card front */}
         <div className="absolute cursor-pointer bg-neutral-100 rounded-2xl inset-0 flex justify-center items-center p-5">
           <div className="flex flex-col justify-center items-center gap-2 ">
-            <img
-              className="size-32 rounded-full object-cover"
-              src={work.imageUrl || urlFor(work.image).url()}
-              alt=""
-            />
-            <h1 className="text-xl text-center font-semibold select-none">{work.title}</h1>
+            <div className="size-32  flex  justify-center items-center">
+              <img
+                className="w-full  object-cover"
+                src={work.imageUrl || urlFor(work.image).url()}
+                alt=""
+              />
+            </div>
+            <h1 className="text-xl text-center font-semibold select-none">
+              {work.title}
+            </h1>
             <div className="flex flex-row justify-center items-center gap-2">
               {work.group.map((group, index) => (
                 <p
@@ -204,7 +208,11 @@ export const Card = ({ work }) => {
               {work.description}
             </p>
             {work?.link && (
-              <Link target="_blank" href={work.link} className="font-bold select-none underline">
+              <Link
+                target="_blank"
+                href={work.link}
+                className="font-bold select-none underline"
+              >
                 Read more
               </Link>
             )}
@@ -270,7 +278,9 @@ const Categories = () => {
   return (
     <div className="relative w-full">
       <div className="border w-full cursor-pointer flex flex-row items-center justify-center gap-3 rounded-full py-2.5 px-4 bg-slate-100/50 border-slate-200">
-        <p className=" w-full max-w-[300px] text-neutral-400 text-left">Work streams </p>
+        <p className=" w-full max-w-[300px] text-neutral-400 text-left">
+          Work streams{" "}
+        </p>
         <IoIosArrowDown size={20} />
       </div>
     </div>
