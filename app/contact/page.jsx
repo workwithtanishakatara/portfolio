@@ -2,6 +2,7 @@ import ContactForm from "@/components/contact/ContactForm";
 import Marquee from "@/components/ui/InfiniteScroll";
 import { fetchData } from "@/lib/FetchData";
 import { urlFor } from "@/lib/ImageUrl";
+import Link from "next/link";
 import React from "react";
 
 const page = async () => {
@@ -18,11 +19,13 @@ const page = async () => {
             Read nice things from my clients
           </p>
           <div className="relative w-full mt-10">
-            <Marquee pauseOnHover className={`[--duration:20s]`}>
+            <Marquee pauseOnHover className={`[--duration:30s]`}>
               {data.testimonials.map((review, index) => (
-                <div
+                <a
+                  target="_blank"
+                  href={review.link}
                   key={index}
-                  className="w-[400px] cursor-pointer flex flex-col gap-12 group p-5 hover:scale-105 transition-all duration-500 bg-slate-100 rounded-2xl"
+                  className="w-[400px] cursor-pointer h-full justify-between flex flex-col gap-12 group p-5 hover:scale-105 transition-all duration-500 bg-slate-100 rounded-2xl"
                 >
                   <p className="text-sm group-hover:text-neutral-800 transition-all duration-500 text-neutral-600 tracking-tight">
                     {review.review}
@@ -43,7 +46,7 @@ const page = async () => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </a>
               ))}
             </Marquee>
             <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
