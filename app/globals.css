@@ -2,32 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html{
+  height: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.ReactFlipCard__container{
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+}
+
+body{
+  scroll-behavior: smooth;
+    height: 100%;
+    width: 100vw !important;
+    overflow-x: hidden !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.element {
+    background-color: #f0f0f0;
+    transition: background-color 2s ease-in-out;
+    animation: color-cycle 20s infinite;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  
+  @keyframes color-cycle {
+    0% { background-color: #eff8ff; } 
+    15% { background-color: #f1f7ff; }  
+    30% { background-color: #f4f1ff; }  
+    45% { background-color: #e5f3ff; } 
+    60% { background-color: #ebf7ff; } 
+    75% { background-color: #f8f7ff; }
+    85% { background-color: #F9F4FF; }
+    100% { background-color: #eff8ff; } 
   }
-}
+  
+
+  
