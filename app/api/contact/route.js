@@ -19,7 +19,7 @@ export async function POST(request) {
   const myEmail = process.env.NEXT_PUBLIC_PERSONAL_EMAIL
 
   const auth = new google.auth.GoogleAuth({
-    keyFile: "cred.json",
+    keyFile: "/cred.json",
     scopes: "https://www.googleapis.com/auth/spreadsheets",
   });
 
