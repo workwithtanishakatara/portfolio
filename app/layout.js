@@ -22,6 +22,8 @@ export default async function RootLayout({ children }) {
     "https://9wlw9jiw.api.sanity.io/v2022-03-07/data/query/production?query=%7B%0A++%22about%22%3A+*%5B_type+%3D%3D+%22aboutPage%22%5D%7Btitle%2C+description%7D%5B0%5D%2C%0A++%22speaking%22%3A+*%5B_type+%3D%3D+%22speakPage%22%5D%7Btitle%2C+description%7D%5B0%5D%2C%0A++%22writing%22%3A+*%5B_type+%3D%3D+%22writingPage%22%5D%7Btitle%2C+description%7D%5B0%5D%2C%0A++++%22socialLinks%22%3A+*%5B_type+%3D%3D+%22homePage%22%5D%7BsocialLinks%7D%5B0%5D%0A%7D"
   );
 
+  const homeData = await fetchData("https://9wlw9jiw.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%22homePage%22%5D%5B0%5D%7B%0A++title%2C%0A++++words+%0A%7D")
+
   return (
     <html lang="en">
       <head>
@@ -38,7 +40,7 @@ export default async function RootLayout({ children }) {
         </Script>
       </head>
       <body className={cn(inter.className, "!tracking-tight")}>
-        <Navbar data={navbarData} />
+        <Navbar homeData={homeData} data={navbarData} />
         <Providers>{children}</Providers>
         <Footer data={navbarData} />
       </body>

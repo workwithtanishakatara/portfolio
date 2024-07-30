@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { FlipWords } from "../ui/flipingWord";
 import Icon from "../GraphSvg";
 
-const Header = ({ data }) => {
+const Header = ({ data, homeData }) => {
   const pathname = usePathname();
 
   const [title, setTitle] = useState();
@@ -50,6 +50,7 @@ const Header = ({ data }) => {
     "Web3 Research",
   ];
 
+
   return (
     <div className="element flex justify-center items-center w-full">
       <div
@@ -76,10 +77,10 @@ const Header = ({ data }) => {
       >
         {/* add the animated text here */}
         <span className="text-3xl md:text-5xl tracking-tight leading-none font-medium">
-          Work with the best minds on
+          {homeData?.title}
         </span>
         <div className="relative w-full">
-          <FlipWords words={words} />
+          <FlipWords words={homeData?.words} />
         </div>
       </div>
       <div

@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import Header from "../speaking/Header";
 import { urlFor } from "@/lib/ImageUrl";
 
-const Navbar = ({ data }) => {
+const Navbar = ({ data, homeData }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -52,7 +52,7 @@ const Navbar = ({ data }) => {
           </div>
         </div>
       </div>
-      <Header data={data} />
+      <Header homeData={homeData} data={data} />
       <motion.div
         initial={{ x: "100%" }}
         animate={{ x: open ? 0 : "100%" }}
