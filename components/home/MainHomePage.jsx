@@ -205,10 +205,10 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
         </div>
       </div>
       <hr />
-      <div className="w-full flex py-20 flex-col lg:flex-row items-center">
+      <div className="w-full flex py-10 flex-col lg:flex-row items-center">
         <div className="space-y-2 lg:space-y-3 w-full">
-          <p className="font-medium text-lg lg:text-xl">{data.cta.subtitle}</p>
-          <p className="font-semibold text-4xl lg:text-5xl">{data.cta.title}</p>
+          <p className="font-medium text-xl lg:text-2xl">{data.cta.subtitle}</p>
+          <p className="font-semibold text-4xl lg:text-6xl">{data.cta.title}</p>
           <a
             href={data.cta.link}
             className="w-fit flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"

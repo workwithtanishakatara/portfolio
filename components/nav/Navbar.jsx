@@ -29,19 +29,19 @@ const Navbar = ({ data, homeData }) => {
             </a>
           </div>
           <div className="hidden md:flex flex-row items-center gap-[35px]">
-            <Link className="hover:scale-110 transition-all" href={"/about"}>
+            <Link className="hover:scale-110 text-lg transition-all" href={"/about"}>
               About
             </Link>
-            <Link className="hover:scale-110 transition-all" href={"/speaking"}>
+            <Link className="hover:scale-110 text-lg transition-all" href={"/speaking"}>
               Speaking
             </Link>
-            <Link className="hover:scale-110 transition-all" href={"/writing"}>
+            <Link className="hover:scale-110 text-lg transition-all" href={"/writing"}>
               Writing
             </Link>
-            <Link className="hover:scale-110 transition-all" href={"/working"}>
-              Working
+            <Link className="hover:scale-110 text-lg transition-all" href={"/work"}>
+              Work
             </Link>
-            <Link className="hover:scale-110 transition-all" href={"/contact"}>
+            <Link className="hover:scale-110 text-lg transition-all" href={"/contact"}>
               Contact
             </Link>
           </div>
@@ -94,9 +94,9 @@ const Navbar = ({ data, homeData }) => {
             <Link
               onClick={() => setOpen(false)}
               className="text-4xl font-semibold"
-              href={"/working"}
+              href={"/work"}
             >
-              Working
+              Work
             </Link>
             <div className="w-full h-[1px] bg-black opacity-10"></div>
             <Link
