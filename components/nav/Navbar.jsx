@@ -17,9 +17,9 @@ const Navbar = ({ data, homeData }) => {
       <div className="flex max-w-[1200px] w-full flex-col justify-center items-center p-5 gap-1">
         <div className="w-full hidden md:flex flex-row justify-end items-center gap-2">
           {data.socialLinks.socialLinks.map((link, index) => (
-            <Link target="_blank" href={link.link}>
+            <a target="_blank" href={link.link}>
               <img className="size-[20px]" src={urlFor(link.icon).url()} />
-            </Link>
+            </a>
           ))}
         </div>
         <div className="w-full flex flex-row justify-between items-center">
@@ -124,9 +124,9 @@ const Navbar = ({ data, homeData }) => {
             <div className="w-full h-[1px] bg-black opacity-10"></div>
             <div className="w-full flex flex-row justify-start items-center gap-2">
               {data.socialLinks.socialLinks.map((link, index) => (
-                <Link target="_blank" href={link.link}>
+                <a target="_blank" href={link.link}>
                   <img className="size-[20px]" src={urlFor(link.icon).url()} />
-                </Link>
+                </a>
               ))}
             </div>
           </div>
