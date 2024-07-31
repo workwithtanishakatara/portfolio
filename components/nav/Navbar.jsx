@@ -18,7 +18,7 @@ const Navbar = ({ data, homeData }) => {
         <div className="w-full hidden md:flex flex-row justify-end items-center gap-2">
           {data.socialLinks.socialLinks.map((link, index) => (
             <Link target="_blank" href={link.link}>
-             <img className="size-[20px]" src={urlFor(link.icon).url()} />
+              <img className="size-[20px]" src={urlFor(link.icon).url()} />
             </Link>
           ))}
         </div>
@@ -29,19 +29,34 @@ const Navbar = ({ data, homeData }) => {
             </a>
           </div>
           <div className="hidden md:flex flex-row items-center gap-[35px]">
-            <Link className="hover:scale-110 text-lg transition-all" href={"/about"}>
+            <Link
+              className="hover:scale-110 text-lg transition-all"
+              href={"/about"}
+            >
               About
             </Link>
-            <Link className="hover:scale-110 text-lg transition-all" href={"/speaking"}>
+            <Link
+              className="hover:scale-110 text-lg transition-all"
+              href={"/speaking"}
+            >
               Speaking
             </Link>
-            <Link className="hover:scale-110 text-lg transition-all" href={"/writing"}>
+            <Link
+              className="hover:scale-110 text-lg transition-all"
+              href={"/writing"}
+            >
               Writing
             </Link>
-            <Link className="hover:scale-110 text-lg transition-all" href={"/work"}>
+            <Link
+              className="hover:scale-110 text-lg transition-all"
+              href={"/work"}
+            >
               Work
             </Link>
-            <Link className="hover:scale-110 text-lg transition-all" href={"/contact"}>
+            <Link
+              className="hover:scale-110 text-lg transition-all"
+              href={"/contact"}
+            >
               Contact
             </Link>
           </div>
@@ -108,15 +123,11 @@ const Navbar = ({ data, homeData }) => {
             </Link>
             <div className="w-full h-[1px] bg-black opacity-10"></div>
             <div className="w-full flex flex-row justify-start items-center gap-2">
-              <Link href={"https://twitter.com"}>
-                <FaTwitter size={25} />
-              </Link>
-              <Link href={"https://linkedin.com"}>
-                <FaLinkedin size={25} />
-              </Link>
-              <Link href={"https://instagram.com"}>
-                <FaInstagram size={25} />
-              </Link>
+              {data.socialLinks.socialLinks.map((link, index) => (
+                <Link target="_blank" href={link.link}>
+                  <img className="size-[20px]" src={urlFor(link.icon).url()} />
+                </Link>
+              ))}
             </div>
           </div>
         </div>
