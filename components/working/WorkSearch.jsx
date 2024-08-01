@@ -2,7 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import { IoClose, IoSearch } from "react-icons/io5";
-import { IoIosArrowBack, IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import {
+  IoIosArrowBack,
+  IoIosArrowDown,
+  IoIosArrowForward,
+} from "react-icons/io";
 import { RiAlarmWarningFill } from "react-icons/ri";
 import Link from "next/link";
 import {
@@ -62,6 +66,8 @@ const WorkSearch = ({ data }) => {
     const categories = new Set();
     const subCategories = new Set();
 
+    categories.add("All");
+
     data.works.forEach((work) => {
       work.group.forEach((group) => {
         if (group.name) categories.add(group.name);
@@ -106,12 +112,13 @@ const WorkSearch = ({ data }) => {
     }
 
     // If a specific tag is selected, filter based on that tag
-    if (selectedTag) {
+    if (selectedTag && selectedTag !== "All") {
       filtered = filtered.filter(
         (work) =>
           work.group.some((g) => g.name === selectedTag) ||
           work.subGroup.some((sg) => sg.name === selectedTag)
       );
+
     }
 
     setFilteredWorks(filtered);
@@ -176,7 +183,7 @@ const WorkSearch = ({ data }) => {
           ))}
         </div>
       )}
-      {totalPages !== 1 && (
+      {totalPages > 1 && (
         <div className="flex justify-center mt-4">
           <button
             onClick={() => handlePageChange(1)}

@@ -14,9 +14,6 @@ const Team = ({ data }) => {
         <div className="relative flex-wrap max-w-[800px] px-[30px] flex justify-center items-center flex-row">
           <AnimatedTooltip size={60} items={data.members} />
         </div>
-        {/* <div className="relative  flex justify-center items-center flex-row">
-          <AnimatedTooltip size={60} items={remainingMembers} />
-        </div> */}
       </div>
     </div>
   );
