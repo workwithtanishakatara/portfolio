@@ -15,7 +15,7 @@ const inter = Poppins({
 export const metadata = {
   title: "Tanisha Katara’s Website",
   description:
-    "Tanisha Katara is an independent blockchain consultant with 5 years of experience, specializing in governance, technical research, and business strategy. She has worked with leading clients such as Polygon Technology and Juno Finance, delivering impactful solutions in web3 adoption, DAO tooling, and crypto payments. Known for her expertise in blockchain governance, Tanisha is a sought-after speaker and thought leader in the industry.",
+    "Tanisha Katara is an independent blockchain consultant with 5 years of experience, specializing in governance, technical research, and business strategy. She has worked with leading clients such as Polygon Technology and Juno Finance, delivering impactful solutions in web3 adoption, DAO tooling, and crypto payments.",
   other: {
     keywords:
       "Blockchain consultant, Governance, Blockchain governance, Web3 adoption, DAO tooling, Crypto payments Product management, Technical research, Polygon Technology, Juno Finance, Independent consultant, Blockchain expert, Layer2, Crypto-friendly neobank, Blockchain keynote speaker",
