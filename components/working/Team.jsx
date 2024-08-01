@@ -2,7 +2,6 @@ import React from "react";
 import { AnimatedTooltip } from "../ui/AnimatedToolTip";
 
 const Team = ({ data }) => {
-
   return (
     <div className="pt-40 pb-20">
       <div className="flex flex-col justify-center items-center gap-10">
@@ -12,7 +11,7 @@ const Team = ({ data }) => {
         <p className="text-left md:text-center text-sm md:text-lg  max-w-[1000px] text-neutral-500 ">
           {data.description}
         </p>
-        <div className="relative flex-wrap max-w-[800px]  flex justify-center items-center flex-row">
+        <div className="relative flex-wrap max-w-[800px] px-[30px] flex justify-center items-center flex-row">
           <AnimatedTooltip size={60} items={data.members} />
         </div>
         {/* <div className="relative  flex justify-center items-center flex-row">

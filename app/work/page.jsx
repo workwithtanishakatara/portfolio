@@ -15,9 +15,9 @@ const page = async () => {
   );
 
   return (
-    <main className="flex flex-col  justify-center items-center">
+    <main className="flex flex-col   justify-center items-center">
       
-      <div className="max-w-[1200px] w-full py-20 p-5">
+      <div className="max-w-[1200px] overflow-x-hidden w-full py-20 p-5">
         <WorkSearch data={data} />
         <Team data={data} />
       </div>
