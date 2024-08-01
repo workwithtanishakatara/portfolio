@@ -29,8 +29,8 @@ const Header = ({ data, homeData }) => {
         setDescription(data["speaking"].description);
         break;
       case "/contact":
-          setTitle("Contact");
-          setDescription("Let’s get this conversation started. Tell us a bit about yourself, and we’ll get in touch as soon as we can.");
+          setTitle(data["contact"].title);
+          setDescription(data["contact"].description);
           break;
       default:
         setTitle("");
