@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { IoClose, IoSearch } from "react-icons/io5";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { RiAlarmWarningFill } from "react-icons/ri";
 import Link from "next/link";
 import {
@@ -22,6 +22,18 @@ const WorkSearch = ({ data }) => {
   const [search, setSearch] = useState("");
   const [filteredWorks, setFilteredWorks] = useState([]);
   const [selectedTag, setSelectedTag] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentWorks = filteredWorks.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(filteredWorks.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
@@ -63,11 +75,11 @@ const WorkSearch = ({ data }) => {
     const subCategoriesArray = Array.from(subCategories);
 
     // Ensure 'others' is at the end
-    if (!categoriesArray.includes('Others')) {
-      categoriesArray.push('Others');
+    if (!categoriesArray.includes("Others")) {
+      categoriesArray.push("Others");
     } else {
-      categoriesArray.splice(categoriesArray.indexOf('Others'), 1);
-      categoriesArray.push('Others');
+      categoriesArray.splice(categoriesArray.indexOf("Others"), 1);
+      categoriesArray.push("Others");
     }
 
     setAllCategories(categoriesArray);
@@ -159,11 +171,41 @@ const WorkSearch = ({ data }) => {
       </div>
       {filteredWorks.length !== 0 && (
         <div className="grid md:grid-cols-2 lg:grid-cols-3  relative !h-full w-full gap-5 grid-cols-1 ">
-          {filteredWorks.map((work, index) => (
+          {currentWorks.map((work, index) => (
             <Card key={index} work={work} />
           ))}
         </div>
       )}
+      {totalPages !== 1 && (
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={() => handlePageChange(1)}
+            className={`size-10 text-lg mx-1 rounded-xl  items-center justify-center text-center flex hover:bg-gray-100`}
+          >
+            <IoIosArrowBack />
+          </button>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              onClick={() => handlePageChange(index + 1)}
+              className={`size-10 text-lg mx-1 rounded-xl ${
+                currentPage === index + 1
+                  ? "bg-black text-white"
+                  : "bg-gray-100 border border-gray-300 text-black"
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button
+            onClick={() => handlePageChange(totalPages)}
+            className={`size-10 text-lg mx-1 rounded-xl  items-center justify-center text-center flex hover:bg-gray-100`}
+          >
+            <IoIosArrowForward />
+          </button>
+        </div>
+      )}
+
       {filteredWorks.length === 0 && (
         <NotFound404 selectedCategories={selectedCategories} search={search} />
       )}
