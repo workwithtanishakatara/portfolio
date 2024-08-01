@@ -211,6 +211,7 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
           <p className="font-semibold text-4xl lg:text-6xl">{data.cta.title}</p>
           <a
             href={data.cta.link}
+            target="_blank"
             className="w-fit flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"
           >
             {data.cta.buttonText} <BsArrowRight size={20} />
