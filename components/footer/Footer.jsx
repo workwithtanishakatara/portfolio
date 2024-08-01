@@ -20,7 +20,7 @@ const Footer = ({ data }) => {
             </Link>
           </div>
           <div className="xl:absolute w-fit xl:inline transition-all duration-500 hover:-rotate-[30deg] -translate-x-[30px] xl:-translate-x-[100px] top-0 cursor-pointer z-50 ">
-            <span className="font-semibold w-fit text-5xl">T</span>
+            <span className="font-semibold pointer-events-none select-none w-fit text-5xl">T</span>
           </div>
           <div className="hidden md:flex flex-row gap-[35px] text-lg">
             <Link
