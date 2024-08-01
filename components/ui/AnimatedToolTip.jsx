@@ -10,7 +10,7 @@ import {
 } from "framer-motion";
 import { urlFor } from "@/lib/ImageUrl";
 
-export const AnimatedTooltip = ({ items, size =  50 }) => {
+export const AnimatedTooltip = ({ items, size = 50 }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const springConfig = { stiffness: 100, damping: 5 };
   const x = useMotionValue(0); // going to set this value on mouse move
@@ -59,14 +59,16 @@ export const AnimatedTooltip = ({ items, size =  50 }) => {
                   rotate: rotate,
                   whiteSpace: "nowrap",
                 }}
-                className="absolute max-w-[150px] text-wrap -top-16  translate-x-1/2 -left-[50%] md:-left-[150%] flex text-xs  flex-col items-center justify-center rounded-md bg-black z-50 shadow-xl px-4 py-2"
+                className="absolute text-wrap -top-7  translate-x-1/2 -left-1/2 flex text-xs  flex-col items-center justify-center rounded-md bg-black z-50 shadow-xl px-4 py-2"
               >
                 <div className="absolute inset-x-10 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent h-px " />
                 <div className="absolute left-10 w-[40%] z-30 -bottom-px bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px " />
-                <div className="font-bold text-wrap text-center text-white relative z-30 text-base">
+                <div className="font-bold  text-center text-white relative z-30 text-sm">
                   {item.name}
                 </div>
-                <div className="text-white text-wrap text-center text-xs">{item.designation}</div>
+                {/* <div className="text-white text-wrap text-center text-xs">
+                  {item.designation}
+                </div> */}
               </motion.div>
             )}
           </AnimatePresence>
