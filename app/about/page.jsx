@@ -53,7 +53,7 @@ const page = async () => {
               <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
             </div>
             <div className="text-xl text-black/70 font-normal md:p-5">
-            You can access Tanisha’s work by <Link className="text-black underline font-semibold " href={"/working"}>clicking here</Link>
+            You can access Tanisha’s work by <Link className="text-black underline font-semibold " href={"/work"}>clicking here</Link>
             </div>
           </div>
           <div className="text-xl md:pr-3 scrollbar-track-transparent scrollbar-thumb-black/10 scrollbar-corner-red-600 !scrollbar-track-rounded-full !scrollbar-thumb-rounded-full !scrollbar-corner-rounded-full scrollbar-thin md:max-h-[600px] md:overflow-y-scroll text-black/70 flex flex-col gap-10 py-5 font-normal">

@@ -59,8 +59,19 @@ const WorkSearch = ({ data }) => {
       });
     });
 
-    setAllCategories(Array.from(categories));
-    setAllSubCategories(Array.from(subCategories));
+    const categoriesArray = Array.from(categories);
+    const subCategoriesArray = Array.from(subCategories);
+
+    // Ensure 'others' is at the end
+    if (!categoriesArray.includes('Others')) {
+      categoriesArray.push('Others');
+    } else {
+      categoriesArray.splice(categoriesArray.indexOf('Others'), 1);
+      categoriesArray.push('Others');
+    }
+
+    setAllCategories(categoriesArray);
+    setAllSubCategories(subCategoriesArray);
   }, [data]);
 
   useEffect(() => {

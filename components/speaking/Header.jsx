@@ -56,7 +56,7 @@ const Header = ({ data, homeData }) => {
       <div
         style={{
           display:
-            pathname === "/about" || pathname === "/" || pathname === "/working"
+            pathname === "/about" || pathname === "/" || pathname === "/work"
               ? "none"
               : "flex",
         }}
@@ -85,12 +85,12 @@ const Header = ({ data, homeData }) => {
       </div>
       <div
         style={{
-          display: pathname === "/working" ? "flex" : "none",
+          display: pathname === "/work" ? "flex" : "none",
         }}
         className="py-20 flex-col justify-center items-center"
       >
         <div className="size-[300px] md:size-[400px] lg:size-[500px] justify-center items-center flex">
-        {pathname === "/working" &&  <Icon />}
+        {pathname === "/work" &&  <Icon />}
          
         </div>
       </div>

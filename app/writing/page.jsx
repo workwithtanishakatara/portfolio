@@ -2,6 +2,7 @@ import WritingItem from "@/components/writing/WritingItem";
 import { fetchData } from "@/lib/FetchData";
 import { urlFor } from "@/lib/ImageUrl";
 import { PortableText } from "next-sanity";
+import Link from "next/link";
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 
@@ -83,12 +84,13 @@ const page = async () => {
           <div className="flex flex-col h-full w-full gap-4">
             <h1 className="font-semibold text-4xl">{data.ctaHeading}</h1>
             <PortableText value={data.ctaText} />
-            <a
+            <Link
+              
               className="w-full md:w-fit flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"
-              href="mailto:webwithwaleed@gmail.com"
+              href={data.ctaLink}
             >
               {data.ctaButtonText} <FaArrowRightLong />
-            </a>
+            </Link>
           </div>
           <div>
             <img
