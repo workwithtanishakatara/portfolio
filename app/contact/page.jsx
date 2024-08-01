@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/ToolTip";
 import { fetchData } from "@/lib/FetchData";
 import { urlFor } from "@/lib/ImageUrl";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { MdArrowOutward } from "react-icons/md";
@@ -41,10 +42,11 @@ const page = async () => {
                   </p>
                   <div className="flex w-full flex-row items-center justify-between">
                     <div className="w-full flex flex-row gap-3 items-center justify-start">
-                      <img
-                        width={40}
-                        height={40}
-                        className="rounded-full"
+                      <Image
+                        loading="lazy"
+                        width={20}
+                        height={20}
+                        className="rounded-full size-[40px]"
                         src={urlFor(review.image).url()}
                       />
                       <div>

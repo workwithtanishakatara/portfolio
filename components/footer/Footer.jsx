@@ -8,6 +8,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/ToolTip";
+import Image from "next/image";
 
 const Footer = ({ data }) => {
   return (
@@ -20,7 +21,9 @@ const Footer = ({ data }) => {
             </Link>
           </div>
           <div className="xl:absolute w-fit xl:inline transition-all duration-500 hover:-rotate-[30deg] -translate-x-[30px] xl:-translate-x-[100px] top-0 cursor-pointer z-50 ">
-            <span className="font-semibold pointer-events-none select-none w-fit text-5xl">T</span>
+            <span className="font-semibold pointer-events-none select-none w-fit text-5xl">
+              T
+            </span>
           </div>
           <div className="hidden md:flex flex-row gap-[35px] text-lg">
             <Link
@@ -78,7 +81,13 @@ const Footer = ({ data }) => {
           <div className="flex flex-row gap-2">
             {data.socialLinks.socialLinks.map((link, index) => (
               <Link target="_blank" href={link.link}>
-                <img className="size-[20px]" src={urlFor(link.icon).url()} />
+                <Image
+                  width={15}
+                  height={15}
+                  loading="lazy"
+                  className="size-[20px]"
+                  src={urlFor(link.icon).url()}
+                />
               </Link>
             ))}
           </div>
@@ -86,7 +95,7 @@ const Footer = ({ data }) => {
         <div className="flex w-full flex-row justify-between gap-5 items-center">
           <div>
             <a target="_blank" href="https://pushyanthkanuri.carrd.co/">
-            PM'ed by <span className="underline">Pushyanth</span>
+              PM'ed by <span className="underline">Pushyanth</span>
             </a>
           </div>
         </div>

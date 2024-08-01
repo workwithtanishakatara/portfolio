@@ -8,6 +8,7 @@ import { IoCloseCircleSharp } from "react-icons/io5";
 import { motion } from "framer-motion";
 import Header from "../speaking/Header";
 import { urlFor } from "@/lib/ImageUrl";
+import Image from "next/image";
 
 const Navbar = ({ data, homeData }) => {
   const [open, setOpen] = useState(false);

@@ -2,6 +2,7 @@ import WritingItem from "@/components/writing/WritingItem";
 import { fetchData } from "@/lib/FetchData";
 import { urlFor } from "@/lib/ImageUrl";
 import { PortableText } from "next-sanity";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -93,7 +94,10 @@ const page = async () => {
             </Link>
           </div>
           <div>
-            <img
+            <Image
+            width={400}
+            height={400}
+            loading="lazy"
               className="w-[800px] object-cover h-[300px] rounded-2xl"
               src={urlFor(data.ctaImage).url()}
             />

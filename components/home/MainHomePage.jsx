@@ -8,6 +8,7 @@ import OrbitingCircles from "../ui/OrbitingCircle";
 import { useMediaQuery } from "react-responsive";
 import { urlFor } from "@/lib/ImageUrl";
 import { Card } from "../working/WorkSearch";
+import Image from "next/image";
 
 export const useIsMobile = () => {
   const [isSSR, setIsSSR] = useState(true);
@@ -89,10 +90,20 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
       </svg>
     ),
     notion: () => (
-      <img src="https://logowik.com/content/uploads/images/t_polygon-matic-icon3725.logowik.com.webp" />
+      <Image
+        width={15}
+        height={15}
+        loading="lazy"
+        src="https://logowik.com/content/uploads/images/t_polygon-matic-icon3725.logowik.com.webp"
+      />
     ),
     openai: () => (
-      <img src="https://logowik.com/content/uploads/images/t_polygon-matic-icon3725.logowik.com.webp" />
+      <Image
+        width={15}
+        height={15}
+        loading="lazy"
+        src="https://logowik.com/content/uploads/images/t_polygon-matic-icon3725.logowik.com.webp"
+      />
     ),
     googleDrive: () => (
       <svg
@@ -237,7 +248,13 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
                   delay={delay}
                   radius={isMobile ? 60 : 80}
                 >
-                  <img className="!w-[35px]" src={urlFor(img).url()} />
+                  <img
+                    width={20}
+                    height={20}
+                    loading="lazy"
+                    className="!w-[35px]"
+                    src={urlFor(img).url()}
+                  />
                 </OrbitingCircles>
               );
             })}
@@ -258,7 +275,13 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
                     delay={delay}
                     reverse
                   >
-                    <img className="!w-[35px]" src={urlFor(img).url()} />
+                    <img
+                      width={20}
+                      height={20}
+                      loading="lazy"
+                      className="!w-[35px]"
+                      src={urlFor(img).url()}
+                    />
                   </OrbitingCircles>
                 </>
               );

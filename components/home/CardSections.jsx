@@ -1,4 +1,5 @@
 import { urlFor } from "@/lib/ImageUrl";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
@@ -28,7 +29,10 @@ export const CustomCard = ({ title, description, link = "/", img }) => (
   >
     <div className="max-h-[450px] w-full overflow-hidden h-full rounded-2xl">
       {img && (
-        <img
+        <Image
+        width={400}
+        height={400}
+        loading="lazy"
           className="w-full transition-all duration-300 group-hover:scale-105 object-cover h-[250px] lg:h-[450px] rounded-2xl"
           src={urlFor(img).url()}
         />

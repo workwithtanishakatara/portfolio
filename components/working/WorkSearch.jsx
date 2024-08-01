@@ -18,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/DropDown";
 import { urlFor } from "@/lib/ImageUrl";
+import Image from "next/image";
 
 const WorkSearch = ({ data }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -118,7 +119,6 @@ const WorkSearch = ({ data }) => {
           work.group.some((g) => g.name === selectedTag) ||
           work.subGroup.some((sg) => sg.name === selectedTag)
       );
-
     }
 
     setFilteredWorks(filtered);
