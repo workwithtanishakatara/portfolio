@@ -189,7 +189,7 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
         <div className="flex w-full flex-row justify-between gap-5 items-center">
           <p className="text-2xl md:text-5xl font-semibold">Selected works</p>
           <Link
-            href={"/working"}
+            href={"/work"}
             className="w-fit md:w-fit flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"
           >
             View All
