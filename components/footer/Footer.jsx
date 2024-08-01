@@ -12,8 +12,8 @@ import {
 const Footer = ({ data }) => {
   return (
     <footer className="flex element  flex-col justify-center items-center w-full ">
-      <div className="flex max-w-[1200px] w-full flex-col justify-center items-center py-10 px-5 gap-20">
-        <div className="w-full pt-1 relative flex flex-row justify-between items-center">
+      <div className="flex max-w-[1200px] w-full flex-col justify-center items-center py-10 px-5 ">
+        <div className="w-full pt-1 relative mb-20 flex flex-row justify-between items-center">
           <div className="">
             <Link href={"/"} className="font-semibold text-xl md:text-2xl">
               Tanisha Katara
@@ -60,21 +60,17 @@ const Footer = ({ data }) => {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
-                  <a  target="_blank"
-                      href="https://www.instagram.com/webwithwaleed">
-                    Developed by{" "}
-                    <span
-                     
-                      className="underline"
-                    >
-                      Waleed
-                    </span>
+                  <a
+                    target="_blank"
+                    href="https://www.instagram.com/webwithwaleed"
+                  >
+                    Developed by <span className="underline">Waleed</span>
                   </a>
                 </TooltipTrigger>
                 <TooltipContent>
-                 <div className="flex flex-col gap-2">
-                 <p> Looking for a website🚀 Contact Me!</p>
-                 </div>
+                  <div className="flex flex-col gap-2">
+                    <p> Looking for a website🚀 Contact Me!</p>
+                  </div>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -85,6 +81,13 @@ const Footer = ({ data }) => {
                 <img className="size-[20px]" src={urlFor(link.icon).url()} />
               </Link>
             ))}
+          </div>
+        </div>
+        <div className="flex w-full flex-row justify-between gap-5 items-center">
+          <div>
+            <a target="_blank" href="https://pushyanthkanuri.carrd.co/">
+            PM'ed by <span className="underline">Pushyanth Kanuri</span>
+            </a>
           </div>
         </div>
       </div>
