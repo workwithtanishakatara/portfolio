@@ -16,8 +16,10 @@ const page = async () => {
     switch(url){
       case "https://www.instagram.com/p/C7Mkvz2veEZ/?img_index=1":
         return {isStatic: true, src : "https://scontent.cdninstagram.com/v/t51.29350-15/445080863_701179285383242_6829720075000149364_n.heic?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE4MDAuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=102&_nc_ohc=Kn90aHKAg4IQ7kNvgEM87zO&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzM3MjIzMTgzMTIzODYxOTA2MA%3D%3D.2-ccb7-5&oh=00_AYDUDtFD3QGKJRrKL6Ith962Z_WX6GMTRhoG-RCVGVT2ZA&oe=66ABD88E&_nc_sid=10d13b"}
+        case "https://www.instagram.com/tv/CLsNgZFnZBi/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==":
+          return {isStatic: true, src : "/assets/img.jpeg"}
       default: 
-        return {isStatic: false, src: null}
+        return {isStatic: false, src: false}
     }
   }
 
