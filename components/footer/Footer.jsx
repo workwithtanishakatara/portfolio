@@ -86,7 +86,7 @@ const Footer = ({ data }) => {
         <div className="flex w-full flex-row justify-between gap-5 items-center">
           <div>
             <a target="_blank" href="https://pushyanthkanuri.carrd.co/">
-            PM'ed by <span className="underline">Pushyanth Kanuri</span>
+            PM'ed by <span className="underline">Pushyanth</span>
             </a>
           </div>
         </div>
