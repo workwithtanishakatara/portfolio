@@ -14,9 +14,7 @@ const WritingItem = ({
 }) => {
   return (
     <div className="w-full flex flex-col md:flex-row gap-5 justify-start ">
-      <Image
-        width={100}
-        height={100}
+      <img
         loading="lazy"
         className="md:max-w-[200px] md:h-[160px] w-full max-h-[300px] object-cover rounded-2xl cursor-pointer"
         onClick={() => window.open(link)}
