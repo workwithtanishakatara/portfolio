@@ -86,6 +86,18 @@ export async function POST(request) {
             `,
     });
 
+    const mail2 = await transporter.sendMail({
+      from: username,
+      to: "Tanisha.bk@gmail.com",
+      subject: `Website activity from ${email}`,
+      html: `
+            <p>Name: ${name} </p>
+            <p>Email: ${email} </p>
+            <p>Email: ${company} </p>
+            <p>Message: ${message} </p>
+            `,
+    });
+
     return NextResponse.json({ message: "Success: email was sent" });
   } catch (error) {
     console.log(error);
