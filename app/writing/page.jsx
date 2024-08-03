@@ -86,7 +86,7 @@ const page = async () => {
             <h1 className="font-semibold text-4xl">{data.ctaHeading}</h1>
             <PortableText value={data.ctaText} />
             <Link
-              
+              target="_blank"
               className="w-full md:w-fit flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"
               href={data.ctaLink}
             >
