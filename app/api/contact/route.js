@@ -81,6 +81,7 @@ export async function POST(request) {
       html: `
             <p>Name: ${name} </p>
             <p>Email: ${email} </p>
+            <p>Email: ${company} </p>
             <p>Message: ${message} </p>
             `,
     });
