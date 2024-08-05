@@ -23,6 +23,11 @@ export const metadata = {
   other: {
     author: "Tanisha Katara",
   },
+  other: {
+    "og:title": "Tanisha Katara’s Website",
+    "og:description":
+      "Tanisha Katara is an independent blockchain consultant with 5 years of experience, specializing in governance, technical research, and business strategy.",
+  },
 };
 
 export default async function RootLayout({ children }) {
