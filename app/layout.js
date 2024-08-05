@@ -27,6 +27,8 @@ export const metadata = {
     "og:title": "Tanisha Katara’s Website",
     "og:description":
       "Tanisha Katara is an independent blockchain consultant with 5 years of experience, specializing in governance, technical research, and business strategy.",
+    "og:image":
+      "https://tanishakatara.com/opengraph-image.png?974640cc067ef151",
   },
 };
 
