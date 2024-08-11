@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import Providers from "@/components/ProgressBar";
 import { fetchData } from "@/lib/FetchData";
 import Script from "next/script";
+import ogImage from "@/public/assets/opengraph-image.png";
 
 const inter = Poppins({
   subsets: ["latin"],
@@ -14,6 +15,7 @@ const inter = Poppins({
 
 export const metadata = {
   title: "Tanisha Katara’s Website",
+  metadataBase: new URL("https://tanishakatara.com"),
   description:
     "Tanisha Katara is an independent blockchain consultant with 5 years of experience, specializing in governance, technical research, and business strategy.",
   other: {
@@ -23,13 +25,20 @@ export const metadata = {
   other: {
     author: "Tanisha Katara",
   },
-  other: {
-    "og:title": "Tanisha Katara’s Website",
-    "og:description":
-      "Tanisha Katara is an independent blockchain consultant with 5 years of experience, specializing in governance, technical research, and business strategy.",
-    "og:image":
-      "https://tanishakatara.com/opengraph-image.png?974640cc067ef151",
+  openGraph: {
+    images: [
+      {
+        url: "http://tanishakatara.com/assets/opengraph-image.png",
+      },
+    ],
   },
+  // other: {
+  //   "og:title": "Tanisha Katara’s Website",
+  //   "og:description":
+  //     "Tanisha Katara is an independent blockchain consultant with 5 years of experience, specializing in governance, technical research, and business strategy.",
+  //   "og:image":
+  //     "https://tanishakatara.com/opengraph-image.png?974640cc067ef151",
+  // },
 };
 
 export default async function RootLayout({ children }) {
