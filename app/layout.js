@@ -28,7 +28,7 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: "http://tanishakatara.com/assets/opengraph-image.png",
+        url: "https://tanishakatara.com/assets/opengraph-image.png",
       },
     ],
   },
