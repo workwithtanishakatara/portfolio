@@ -11,9 +11,15 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/?trk=:path*",
+        source: "/",
+        has: [
+          {
+            type: "query",
+            key: "trk",
+          },
+        ],
         destination: "/",
-        permanent: true, // This sets it as a 301 redirect
+        permanent: true,
       },
     ];
   },
