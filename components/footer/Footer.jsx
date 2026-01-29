@@ -1,7 +1,6 @@
 import { urlFor } from "@/lib/ImageUrl";
 import Link from "next/link";
 import React from "react";
-import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import {
   Tooltip,
   TooltipContent,

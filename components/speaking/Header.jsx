@@ -73,15 +73,23 @@ const Header = ({ data, homeData }) => {
         style={{
           display: pathname === "/" ? "flex" : "none",
         }}
-        className="px-5 py-20 justify-start items-start max-w-[1200px] w-full flex-col text-3xl md:text-5xl tracking-tight leading-none font-medium"
+        className="px-5 py-20 justify-start items-start max-w-[1200px] w-full flex-col gap-2 text-3xl md:text-5xl tracking-tight leading-none font-medium"
       >
-        {/* add the animated text here */}
-        <span className="text-3xl md:text-5xl tracking-tight leading-none font-medium">
+        <span className="text-3xl md:text-5xl tracking-tight  font-medium">
           {homeData?.title}
         </span>
-        <div className="relative w-full">
+        <div className="relative w-full space-x-3">
+          <span>
+            Getting the 
+          </span>
           <FlipWords words={homeData?.words} />
+          <span>
+            right is harder.
+          </span>
         </div>
+         <span className="text-3xl md:text-5xl tracking-tight font-medium">
+          That's what Tanisha does.
+        </span>
       </div>
       <div
         style={{

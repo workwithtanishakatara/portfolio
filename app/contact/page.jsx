@@ -1,16 +1,9 @@
 import ContactForm from "@/components/contact/ContactForm";
 import Marquee from "@/components/ui/InfiniteScroll";
 import SparklesText from "@/components/ui/SparklingText";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/ToolTip";
 import { fetchData } from "@/lib/FetchData";
 import { urlFor } from "@/lib/ImageUrl";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { MdArrowOutward } from "react-icons/md";
 
