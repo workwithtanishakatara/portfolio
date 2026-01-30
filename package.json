@@ -29,6 +29,7 @@
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "react-responsive": "^10.0.0",
+    "react-rough-notation": "^1.0.8",
     "reactjs-flip-card": "^2.0.3",
     "tailwind-merge": "^2.4.0"
   },

@@ -122,6 +122,7 @@ const WorkSearch = ({ data }) => {
     }
 
     setFilteredWorks(filtered);
+    setCurrentPage(1); // <--- THIS IS THE FIX: Reset page to 1 on filter change
   }, [search, selectedCategories, selectedTag, data.works]);
 
   return (

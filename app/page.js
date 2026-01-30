@@ -11,7 +11,7 @@ const clients = [
   "Ethereum Gov AI",
   "Polygon",
   "Filecoin",
-  "Avail",
+  "Avail", 
   "Mina Foundation",
   "Aragon",
   "Liberdus",
@@ -32,7 +32,7 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col justify-center items-center">
-      <div className="relative w-full mt-10">
+      {/* <div className="relative w-full mt-10">
         <Marquee className={`[--duration:20s]`}>
           {clients.map((client, index) => (
             <div
@@ -48,7 +48,7 @@ export default async function Home() {
         </Marquee>
         <div className="pointer-events-none opacity-0 md:opacity-100 absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
         <div className="pointer-events-none opacity-0 md:opacity-100 absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
-      </div>
+      </div> */}
       <div className="max-w-[1200px] w-full py-20 p-5">
         <MainHomePage data={data.cardSection} />
       </div>

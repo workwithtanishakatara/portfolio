@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { FlipWords } from "../ui/flipingWord";
 import Icon from "../GraphSvg";
 import { BsArrowRight } from "react-icons/bs";
+import CalendlyPopupNative from "../ui/CalendlyPopupNative";
+import { Highlighter } from "../ui/Highlighter";
 
 const Header = ({ data, homeData }) => {
   const pathname = usePathname();
@@ -64,8 +66,9 @@ const Header = ({ data, homeData }) => {
         }}
         className="px-5 py-20 justify-start items-start max-w-[1200px] w-full flex-col gap-2 text-3xl md:text-5xl tracking-tight leading-none font-medium"
       >
-        <span className="text-3xl md:text-5xl tracking-tight  font-medium">
+        <span className="text-xl md:text-2xl tracking-tight  font-normal">
           {homeData?.title}
+          
         </span>
         <div className="relative w-full space-x-3">
           <span>Getting the</span>
@@ -73,22 +76,26 @@ const Header = ({ data, homeData }) => {
           <span>right is harder.</span>
         </div>
         <span className="text-3xl md:text-5xl tracking-tight font-medium">
-          That's what Tanisha does.
+          That's what <Highlighter iterations={3} >Tanisha</Highlighter> does.
         </span>
-        <div className="flex mt-5 flex-row gap-2">
-          <a
-            href="/contact#book"
+        {/* <div className="flex mt-5 flex-row gap-2"> */}
+          {/* <a
+            href="Calendly.initPopupWidget({url: 'https://calendly.com/tanisha-katara/office-hours-with-tanisha-katara'});return false;"
             className="w-fit text-base font-normal tracking-normal z-50 flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"
           >
             Schedule a call <BsArrowRight size={20} />
-          </a>
+          </a> */}
+          {/* <CalendlyPopupNative
+          buttonText={"Schedule a call"}
+          url={"https://calendly.com/tanisha-katara/office-hours-with-tanisha-katara"}
+          />
           <a
             href="/work"
             className="w-fit text-base font-normal tracking-normal z-50 flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"
           >
             See case studies <BsArrowRight size={20} />
-          </a>
-        </div>
+          </a> */}
+        {/* </div> */}
       </div>
       <div
         style={{

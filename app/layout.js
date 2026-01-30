@@ -7,6 +7,7 @@ import Providers from "@/components/ProgressBar";
 import { fetchData } from "@/lib/FetchData";
 import Script from "next/script";
 import ogImage from "@/public/assets/opengraph-image.png";
+import CalendlyPopupNative from "@/components/ui/CalendlyPopupNative";
 
 const inter = Poppins({
   subsets: ["latin"],
@@ -68,11 +69,19 @@ export default async function RootLayout({ children }) {
 
   gtag('config', 'G-N4KEZFQLVW');`}
         </Script>
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
       </head>
       <body className={cn(inter.className, "!tracking-tight")}>
         <Navbar homeData={homeData} data={navbarData} />
         <Providers>{children}</Providers>
         <Footer data={navbarData} />
+        <div className="fixed bottom-0 right-0 z-50 p-10">
+          <CalendlyPopupNative
+          buttonText={"Schedule a call"}
+          url={"https://calendly.com/tanisha-katara/office-hours-with-tanisha-katara"}
+          />
+        </div>
       </body>
     </html>
   );

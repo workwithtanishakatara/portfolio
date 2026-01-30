@@ -14,7 +14,7 @@ const page = async () => {
     <main className="flex flex-col justify-center items-center">
       <div className="max-w-[1200px] w-full py-20 p-5">
         <div className="flex flex-row justify-center gap-5 items-center flex-wrap">
-          {data?.speakingEvents.map((event, index) => (
+          {data?.speakingEvents.reverse().map((event, index) => (
             <SpeakingVideoItem
               key={index}
               link={event.link}
