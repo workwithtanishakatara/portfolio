@@ -78,24 +78,15 @@ const Header = ({ data, homeData }) => {
         <span className="text-3xl md:text-4xl tracking-tight font-medium">
           That's what Tanisha does.
         </span>
-        {/* <div className="flex mt-5 flex-row gap-2"> */}
-          {/* <a
-            href="Calendly.initPopupWidget({url: 'https://calendly.com/tanisha-katara/office-hours-with-tanisha-katara'});return false;"
-            className="w-fit text-base font-normal tracking-normal z-50 flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"
-          >
-            Schedule a call <BsArrowRight size={20} />
-          </a> */}
-          {/* <CalendlyPopupNative
-          buttonText={"Schedule a call"}
-          url={"https://calendly.com/tanisha-katara/office-hours-with-tanisha-katara"}
-          />
+        <div className="flex mt-5 flex-row gap-2">
+        
           <a
             href="/work"
             className="w-fit text-base font-normal tracking-normal z-50 flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"
           >
             See case studies <BsArrowRight size={20} />
-          </a> */}
-        {/* </div> */}
+          </a>
+        </div>
       </div>
       <div
         style={{
