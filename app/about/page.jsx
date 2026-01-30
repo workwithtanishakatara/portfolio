@@ -1,4 +1,4 @@
-import Header from "@/components/speaking/Header";
+
 import Marquee from "@/components/ui/InfiniteScroll";
 import { LinkPreview } from "@/components/ui/LinkPreview";
 import { fetchData } from "@/lib/FetchData";
@@ -29,7 +29,6 @@ const page = async () => {
 
   return (
     <main className="flex flex-col  justify-center items-center">
-      {/* <Header title="About" /> */}
       <div className="max-w-[1200px] w-full py-20 p-5">
         <div className="flex flex-col md:flex-row justify-between gap-10 items-start ">
           <div className="md:sticky md:top-0 w-full md:max-w-[500px] md:min-w-[500px]">

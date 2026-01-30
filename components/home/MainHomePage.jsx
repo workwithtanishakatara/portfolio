@@ -36,37 +36,6 @@ const MainHomePage = ({ data }) => {
 export default MainHomePage;
 
 export const MainHomePagePartTwo = ({ data, selectedWork }) => {
-  const isMobile = useIsMobile();
-
-  function getDelay(index, totalItems) {
-    let maxDelay;
-    switch (totalItems) {
-      case 1:
-      case 2:
-        maxDelay = 10;
-        break;
-      case 3:
-        maxDelay = 14;
-        break;
-      case 4:
-        maxDelay = 14;
-        break;
-      case 5:
-        maxDelay = 16;
-        break;
-      case 6:
-        maxDelay = 17.5;
-        break;
-      default:
-        maxDelay = (totalItems - 1) * 3.5; // an example of a generalized guess
-    }
-
-    if (totalItems === 1) {
-      return 0;
-    }
-    const stepSize = maxDelay / (totalItems - 1);
-    return stepSize * index;
-  }
 
   return (
     <div className="w-full">

@@ -1,13 +1,8 @@
-import Icon from "@/components/GraphSvg";
-import Header from "@/components/speaking/Header";
+
 import SpeakingVideoItem from "@/components/speaking/SpeakingVideoItem";
-import Marquee from "@/components/ui/InfiniteScroll";
-import { LinkPreview } from "@/components/ui/LinkPreview";
 import Team from "@/components/working/Team";
 import WorkSearch from "@/components/working/WorkSearch";
 import { fetchData } from "@/lib/FetchData";
-import { urlFor } from "@/lib/ImageUrl";
-import { PortableText } from "next-sanity";
 import React from "react";
 
 const page = async () => {
@@ -25,9 +20,6 @@ const page = async () => {
             <h1 className=" text-4xl md:text-6xl  font-semibold text-left md:text-center capitalize">
               {data.additionalWorkTitle}
             </h1>
-            {/* <p className="text-left md:text-center text-sm md:text-lg  max-w-[1000px] text-neutral-500 ">
-          {data.add}
-        </p> */}
             <div className="flex flex-row justify-center gap-5 items-center flex-wrap">
               {data?.additionalWork.map((event, index) => (
                 <SpeakingVideoItem

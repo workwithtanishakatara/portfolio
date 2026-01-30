@@ -1,4 +1,4 @@
-import Header from "@/components/speaking/Header";
+
 import SpeakingVideoItem from "@/components/speaking/SpeakingVideoItem";
 import { fetchData } from "@/lib/FetchData";
 import React from "react";
@@ -12,10 +12,6 @@ const page = async () => {
 
   return (
     <main className="flex flex-col justify-center items-center">
-      {/* <Header
-        title="Speaking"
-        description="Unleash your Web3 knowledge with Tanisha's engaging talks! Dive deep, get inspired, and conquer the future!"
-      /> */}
       <div className="max-w-[1200px] w-full py-20 p-5">
         <div className="flex flex-row justify-center gap-5 items-center flex-wrap">
           {data?.speakingEvents.map((event, index) => (

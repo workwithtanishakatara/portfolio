@@ -2,13 +2,11 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { motion } from "framer-motion";
 import Header from "../speaking/Header";
 import { urlFor } from "@/lib/ImageUrl";
-import Image from "next/image";
 
 const Navbar = ({ data, homeData }) => {
   const [open, setOpen] = useState(false);

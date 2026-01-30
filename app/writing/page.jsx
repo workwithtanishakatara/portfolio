@@ -65,10 +65,6 @@ const page = async () => {
 
   return (
     <main className="flex flex-col justify-center items-center">
-      {/* <Header
-        title="Writing"
-        description="Confused about Web3 and blockchain? No worries! Tanisha breaks down the latest trends in easy-to-understand writing."
-      /> */}
       <div className="max-w-[1200px] w-full py-20 p-5 flex flex-col gap-20">
         <div className="flex flex-row justify-center gap-10 items-center flex-wrap">
           {data.articles.map((article, index) => (
