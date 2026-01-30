@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 import { FlipWords } from "../ui/flipingWord";
 import Icon from "../GraphSvg";
 import { BsArrowRight } from "react-icons/bs";
-import CalendlyPopupNative from "../ui/CalendlyPopupNative";
-import { Highlighter } from "../ui/Highlighter";
 
 const Header = ({ data, homeData }) => {
   const pathname = usePathname();
@@ -68,7 +66,6 @@ const Header = ({ data, homeData }) => {
       >
         <span className="text-3xl md:text-4xl tracking-tight  font-medium">
           {homeData?.title}
-          
         </span>
         <div className="relative w-full space-x-3">
           <span>Getting the</span>
@@ -79,7 +76,6 @@ const Header = ({ data, homeData }) => {
           That's what Tanisha does.
         </span>
         <div className="flex mt-5 flex-row gap-2">
-        
           <a
             href="/work"
             className="w-fit text-base font-normal tracking-normal z-50 flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"

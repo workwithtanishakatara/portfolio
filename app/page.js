@@ -19,7 +19,7 @@ export default async function Home() {
     <main className="flex flex-col justify-center items-center">
       <div className="max-w-[1200px] py-20">
         <h1 className="text-lg text-center md:text-xl font-medium">Trusted By</h1>
-        <div className="flex flex-row mt-4 justify-center items-center gap-10">
+        <div className="flex flex-row mt-4 flex-wrap justify-center items-center gap-10">
           <Image
             src={"/assets/logos/Aragon.png"}
             width={100}
