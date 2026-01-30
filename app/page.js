@@ -1,25 +1,10 @@
 import MainHomePage, {
   MainHomePagePartTwo,
 } from "@/components/home/MainHomePage";
-import Marquee from "@/components/ui/InfiniteScroll";
 import { LinkPreview } from "@/components/ui/LinkPreview";
 import { fetchData } from "@/lib/FetchData";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
-
-const clients = [
-  "Ethereum Gov AI",
-  "Polygon",
-  "Filecoin",
-  "Avail", 
-  "Mina Foundation",
-  "Aragon",
-  "Liberdus",
-  "DaoLens",
-  "DaoCals",
-  "Juno Finance",
-  "instiX",
-];
 
 export default async function Home() {
   const data = await fetchData(
@@ -32,23 +17,74 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col justify-center items-center">
-      {/* <div className="relative w-full mt-10">
-        <Marquee className={`[--duration:20s]`}>
-          {clients.map((client, index) => (
-            <div
-              key={index}
-              className="flex flex-row justify-center items-center gap-10 mr-5"
-            >
-              <h1 className="text-4xl opacity-50 hover:opacity-100 transition-all duration-300 md:text-6xl font-semibold text-left md:text-center capitalize">
-                {client}
-              </h1>
-              <div className="w-[20px] opacity-50 hover:opacity-100 transition-all duration-300 h-[20px] rotate-45 bg-black" />
-            </div>
-          ))}
-        </Marquee>
-        <div className="pointer-events-none opacity-0 md:opacity-100 absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
-        <div className="pointer-events-none opacity-0 md:opacity-100 absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
-      </div> */}
+      <div className="max-w-[1200px] py-20">
+        <h1 className="text-lg text-center md:text-xl font-medium">Trusted By</h1>
+        <div className="flex flex-row mt-4 justify-center items-center gap-10">
+          <Image
+            src={"/assets/logos/Aragon.png"}
+            width={100}
+            height={100}
+            alt="client"
+            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+          />
+          <Image
+            src={"/assets/logos/DaoLens.webp"}
+            width={100}
+            height={100}
+            alt="client"
+            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+          />
+          <Image
+            src={"/assets/logos/ethereum.png"}
+            width={100}
+            height={100}
+            alt="client"
+            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+          />
+          <Image
+            src={"/assets/logos/avail.webp"}
+            width={100}
+            height={100}
+            alt="client"
+            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+          />
+          <Image
+            src={"/assets/logos/filecoin.png"}
+            width={100}
+            height={100}
+            alt="client"
+            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+          />
+          <Image
+            src={"/assets/logos/Juno.png"}
+            width={100}
+            height={100}
+            alt="client"
+            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+          />
+          <Image
+            src={"/assets/logos/Liberdus.png"}
+            width={100}
+            height={100}
+            alt="client"
+            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+          />
+          <Image
+            src={"/assets/logos/mina.png"}
+            width={100}
+            height={100}
+            alt="client"
+            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+          />
+          <Image
+            src={"/assets/logos/polygon.png"}
+            width={100}
+            height={100}
+            alt="client"
+            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+          />
+        </div>
+      </div>
       <div className="max-w-[1200px] w-full py-20 p-5">
         <MainHomePage data={data.cardSection} />
       </div>

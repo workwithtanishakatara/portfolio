@@ -64,9 +64,9 @@ const Header = ({ data, homeData }) => {
         style={{
           display: pathname === "/" ? "flex" : "none",
         }}
-        className="px-5 py-20 justify-start items-start max-w-[1200px] w-full flex-col gap-2 text-3xl md:text-5xl tracking-tight leading-none font-medium"
+        className="px-5 py-20 justify-start items-start max-w-[1200px] w-full flex-col gap-1 text-3xl md:text-4xl tracking-tight leading-none font-medium"
       >
-        <span className="text-xl md:text-2xl tracking-tight  font-normal">
+        <span className="text-3xl md:text-4xl tracking-tight  font-medium">
           {homeData?.title}
           
         </span>
@@ -75,8 +75,8 @@ const Header = ({ data, homeData }) => {
           <FlipWords words={homeData?.words} />
           <span>right is harder.</span>
         </div>
-        <span className="text-3xl md:text-5xl tracking-tight font-medium">
-          That's what <Highlighter iterations={3} >Tanisha</Highlighter> does.
+        <span className="text-3xl md:text-4xl tracking-tight font-medium">
+          That's what Tanisha does.
         </span>
         {/* <div className="flex mt-5 flex-row gap-2"> */}
           {/* <a

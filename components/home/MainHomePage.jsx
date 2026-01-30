@@ -4,11 +4,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import CardSections, { CustomCard } from "./CardSections";
-import OrbitingCircles from "../ui/OrbitingCircle";
 import { useMediaQuery } from "react-responsive";
-import { urlFor } from "@/lib/ImageUrl";
 import { Card } from "../working/WorkSearch";
-import Image from "next/image";
 import { InteractiveGridPattern } from "../ui/InteractiveGridPattern";
 import { cn } from "@/lib/utils";
 
@@ -39,7 +36,7 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
 
   return (
     <div className="w-full">
-      <div className="py-20">
+      {/* <div className="py-20">
          <div className="flex w-full flex-col gap-5 justify-center items-center">
           <p className="text-2xl md:text-5xl font-semibold">Our Clients</p>
           <p className="text-xl text-center">11 clients in 3.5 years: all through referral and all contracts extended.</p>
@@ -119,7 +116,7 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="w-full flex flex-col py-20 justify-center items-center">
         <div className="flex w-full flex-row justify-between gap-5 items-center">
           <p className="text-2xl md:text-5xl font-semibold">Selected works</p>
@@ -160,7 +157,11 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
               {data.cta.title}
             </p>
             <a
-              href={data.cta.link}
+              href={"#"}
+              onClick={(e) => {
+        e.preventDefault();
+        window.openCalendlyPopup();
+      }}
               target="_blank"
               className="w-fit z-50 flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"
             >
