@@ -25,63 +25,63 @@ export default async function Home() {
             width={100}
             height={100}
             alt="client"
-            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
           />
           <Image
             src={"/assets/logos/DaoLens.webp"}
             width={100}
             height={100}
             alt="client"
-            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
           />
           <Image
             src={"/assets/logos/ethereum.png"}
             width={100}
             height={100}
             alt="client"
-            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
           />
           <Image
             src={"/assets/logos/avail.webp"}
             width={100}
             height={100}
             alt="client"
-            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
           />
           <Image
             src={"/assets/logos/filecoin.png"}
             width={100}
             height={100}
             alt="client"
-            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
           />
           <Image
             src={"/assets/logos/Juno.png"}
             width={100}
             height={100}
             alt="client"
-            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
           />
           <Image
             src={"/assets/logos/Liberdus.png"}
             width={100}
             height={100}
             alt="client"
-            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
           />
           <Image
             src={"/assets/logos/mina.png"}
             width={100}
             height={100}
             alt="client"
-            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
           />
           <Image
             src={"/assets/logos/polygon.png"}
             width={100}
             height={100}
             alt="client"
-            className="grayscale w-16 hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
           />
         </div>
       </div>

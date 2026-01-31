@@ -47,7 +47,7 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
                 width={100}
                 height={100}
                 alt="client"
-                className="grayscale aspect-square hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+                className="aspect-square  opacity-50 hover:opacity-100 transition-all duration-300"
               />
             </div>
              <div className="col-span-1 flex flex-col justify-center items-center gap-10">
@@ -56,14 +56,14 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
                 width={100}
                 height={100}
                 alt="client"
-                className="grayscale aspect-square hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+                className="aspect-square  opacity-50 hover:opacity-100 transition-all duration-300"
               />
                <Image
                 src={"/assets/logos/ethereum.png"}
                 width={100}
                 height={100}
                 alt="client"
-                className="grayscale aspect-square hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+                className="aspect-square  opacity-50 hover:opacity-100 transition-all duration-300"
               />
             </div>
              <div className="col-span-1 flex flex-col justify-center items-center gap-10">
@@ -72,21 +72,21 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
                 width={100}
                 height={100}
                 alt="client"
-                className="grayscale aspect-square hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+                className="aspect-square  opacity-50 hover:opacity-100 transition-all duration-300"
               />
                <Image
                 src={"/assets/logos/filecoin.png"}
                 width={100}
                 height={100}
                 alt="client"
-                className="grayscale aspect-square hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+                className="aspect-square  opacity-50 hover:opacity-100 transition-all duration-300"
               />
                <Image
                 src={"/assets/logos/Juno.png"}
                 width={100}
                 height={100}
                 alt="client"
-                className="grayscale aspect-square hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+                className="aspect-square  opacity-50 hover:opacity-100 transition-all duration-300"
               />
             </div>
              <div className="col-span-1 flex flex-col justify-center items-center gap-10">
@@ -95,14 +95,14 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
                 width={100}
                 height={100}
                 alt="client"
-                className="grayscale aspect-square hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+                className="aspect-square  opacity-50 hover:opacity-100 transition-all duration-300"
               />
                <Image
                 src={"/assets/logos/mina.png"}
                 width={100}
                 height={100}
                 alt="client"
-                className="grayscale aspect-square hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+                className="aspect-square  opacity-50 hover:opacity-100 transition-all duration-300"
               />
             </div>
              <div className="col-span-1 flex flex-col justify-center items-center gap-10">
@@ -111,7 +111,7 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
                 width={100}
                 height={100}
                 alt="client"
-                className="grayscale aspect-square hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+                className="aspect-square  opacity-50 hover:opacity-100 transition-all duration-300"
               />
             </div>
           </div>
