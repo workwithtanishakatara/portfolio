@@ -11,7 +11,7 @@ const Logos = [
   {
     url: "https://ethereum.org/",
     logo: "/assets/logos/ethereum.png",
-    name: "Ethereum Gov AI Agent",
+    name: "Ethereum",
     imageAlt: "Ethereum Gov AI Agent logo",
   },
   {
