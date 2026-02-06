@@ -34,7 +34,7 @@ const Logos = [
   },
   {
     name: "MINA",
-    url: "https://mina.org/",
+    url: "https://minaprotocol.com/",
     logo: "/assets/logos/mina.png",
     imageAlt: "Mina logo",
   },
@@ -67,6 +67,12 @@ const Logos = [
     url: "https://instix.io/",
     logo: "/assets/logos/instix.jpg",
     imageAlt: "InstiX logo",
+  },
+  {
+    name: "Liberdus",
+    url: "https://liberdus.com/site/",
+    logo: "/assets/logos/liberdus.jpg",
+    imageAlt: "Liberdus logo",
   }
 ]
 
