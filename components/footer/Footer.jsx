@@ -39,9 +39,9 @@ const Footer = ({ data }) => {
             </Link>
             <Link
               className="hover:scale-110 text-lg transition-all"
-              href={"/writing"}
+              href={"/research"}
             >
-              Writing
+              Research
             </Link>
             <Link
               className="hover:scale-110 text-lg transition-all"

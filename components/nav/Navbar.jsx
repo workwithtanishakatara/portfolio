@@ -42,9 +42,9 @@ const Navbar = ({ data, homeData }) => {
             </Link>
             <Link
               className="hover:scale-110 text-lg transition-all"
-              href={"/writing"}
+              href={"/research"}
             >
-              Writing
+              Research
             </Link>
             <Link
               className="hover:scale-110 text-lg transition-all"
@@ -100,9 +100,9 @@ const Navbar = ({ data, homeData }) => {
             <Link
               onClick={() => setOpen(false)}
               className="text-4xl font-semibold"
-              href={"/writing"}
+              href={"/research"}
             >
-              Writing
+              Research
             </Link>
             <div className="w-full h-[1px] bg-black opacity-10"></div>
             <Link

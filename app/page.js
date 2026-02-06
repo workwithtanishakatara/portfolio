@@ -9,7 +9,7 @@ import Image from "next/image";
 
 const Logos = [
   {
-    url: "https://aiagent.tanishakatara.com/",
+    url: "https://ethereum.org/",
     logo: "/assets/logos/ethereum.png",
     name: "Ethereum Gov AI Agent",
     imageAlt: "Ethereum Gov AI Agent logo",
@@ -58,7 +58,7 @@ const Logos = [
   },
   {
     name: "DaoCals",
-    url: "https://daocals.com/",
+    url: "https://www.linkedin.com/company/thetrackapp?trk=public_post-text",
     logo: "/assets/logos/daocals.png",
     imageAlt: "DaoCals logo",
   },

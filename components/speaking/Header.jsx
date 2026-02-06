@@ -21,7 +21,7 @@ const Header = ({ data, homeData }) => {
         setTitle("Home");
         setDescription("");
         break;
-      case "/writing":
+      case "/research":
         setTitle(data["writing"].title);
         setDescription(data["writing"].description);
         break;
