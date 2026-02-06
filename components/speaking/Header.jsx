@@ -84,7 +84,7 @@ const Header = ({ data, homeData }) => {
           </a>
         </div>
       </div>
-      <div
+      {/* <div
         style={{
           display: pathname === "/work" ? "flex" : "none",
         }}
@@ -93,7 +93,7 @@ const Header = ({ data, homeData }) => {
         <div className="size-[300px] md:size-[400px] lg:size-[500px] justify-center items-center flex">
           {pathname === "/work" && <Icon />}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -2,9 +2,73 @@ import MainHomePage, {
   MainHomePagePartTwo,
 } from "@/components/home/MainHomePage";
 import { LinkPreview } from "@/components/ui/LinkPreview";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/ToolTip";
 import { fetchData } from "@/lib/FetchData";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
+
+const Logos = [
+  {
+    url: "https://aiagent.tanishakatara.com/",
+    logo: "/assets/logos/ethereum.png",
+    name: "Ethereum Gov AI Agent",
+    imageAlt: "Ethereum Gov AI Agent logo",
+  },
+  {
+    url: "https://polygon.technology/",
+    logo: "/assets/logos/polygon.png",
+    name: "Polygon",
+    imageAlt: "Polygon logo",
+  },
+  {
+    name: "Avail",
+    url: "https://avail.io/",
+    logo: "/assets/logos/avail.webp",
+    imageAlt: "Avail logo",
+  },
+  {
+    name: "Filecoin",
+    url: "https://filecoin.io/",
+    logo: "/assets/logos/filecoin.png",
+    imageAlt: "Filecoin logo",
+  },
+  {
+    name: "MINA",
+    url: "https://mina.org/",
+    logo: "/assets/logos/mina.png",
+    imageAlt: "Mina logo",
+  },
+  {
+    url: "https://aragon.org/",
+    logo: "/assets/logos/Aragon.png",
+    name: "Aragon",
+    imageAlt: "Aragon logo",
+  },
+  {
+    url: "https://www.junofinance.com/",
+    logo: "/assets/logos/juno.png",
+    name: "Juno",
+    imageAlt: "Juno logo",
+  },
+  {
+    url: "https://daolens.io/",
+    logo: "/assets/logos/DaoLens.webp",
+    name: "DaoLens",
+    imageAlt: "DaoLens logo",
+  },
+  {
+    name: "DaoCals",
+    url: "https://daocals.com/",
+    logo: "/assets/logos/daocals.png",
+    imageAlt: "DaoCals logo",
+  },
+  {
+    name: "InstiX",
+    url: "https://instix.io/",
+    logo: "/assets/logos/instix.jpg",
+    imageAlt: "InstiX logo",
+  }
+]
 
 export default async function Home() {
   const data = await fetchData(
@@ -16,73 +80,30 @@ export default async function Home() {
   );
 
   return (
-    <main className="flex flex-col justify-center items-center">
+    <TooltipProvider>
+      <main className="flex flex-col justify-center items-center">
       <div className="max-w-[1200px] py-20">
         <h1 className="text-lg text-center md:text-xl font-medium">Trusted By</h1>
         <div className="flex flex-row mt-4 flex-wrap justify-center items-center gap-10">
-          <Image
-            src={"/assets/logos/Aragon.png"}
+        
+      {Logos.map((logo, index)=> (
+         <Tooltip key={index} delayDuration={0} >
+          <TooltipTrigger>
+            <a href={logo.url} target="_blank">
+               <Image
+            src={logo.logo}
             width={100}
             height={100}
-            alt="client"
+            alt={logo.imageAlt}
             className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
           />
-          <Image
-            src={"/assets/logos/DaoLens.webp"}
-            width={100}
-            height={100}
-            alt="client"
-            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
-          />
-          <Image
-            src={"/assets/logos/ethereum.png"}
-            width={100}
-            height={100}
-            alt="client"
-            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
-          />
-          <Image
-            src={"/assets/logos/avail.webp"}
-            width={100}
-            height={100}
-            alt="client"
-            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
-          />
-          <Image
-            src={"/assets/logos/filecoin.png"}
-            width={100}
-            height={100}
-            alt="client"
-            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
-          />
-          <Image
-            src={"/assets/logos/Juno.png"}
-            width={100}
-            height={100}
-            alt="client"
-            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
-          />
-          <Image
-            src={"/assets/logos/Liberdus.png"}
-            width={100}
-            height={100}
-            alt="client"
-            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
-          />
-          <Image
-            src={"/assets/logos/mina.png"}
-            width={100}
-            height={100}
-            alt="client"
-            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
-          />
-          <Image
-            src={"/assets/logos/polygon.png"}
-            width={100}
-            height={100}
-            alt="client"
-            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
-          />
+            </a>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{logo.name}</p>
+          </TooltipContent>
+         </Tooltip>
+      ))}
         </div>
       </div>
       <div className="max-w-[1200px] w-full py-20 p-5">
@@ -109,5 +130,6 @@ export default async function Home() {
         <MainHomePagePartTwo selectedWork={selectedWork} data={data} />
       </div>
     </main>
+    </TooltipProvider>
   );
 }
