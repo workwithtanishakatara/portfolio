@@ -65,22 +65,21 @@ const Header = ({ data, homeData }) => {
         className="px-5 py-20 justify-start items-start max-w-[1200px] w-full flex-col gap-1 text-2xl md:text-4xl tracking-tight leading-none font-medium"
       >
         <span className="text-2xl md:text-4xl tracking-tight  font-medium">
-          {homeData?.title}
+          Tanisha Katara designs
         </span>
         <div className="relative w-full space-x-3">
-          <span>Getting the</span>
           <FlipWords words={homeData?.words} />
-          <span>right is harder.</span>
+          <span>for blockchain protocols</span>
         </div>
-        <span className="text-2xl md:text-4xl tracking-tight font-medium">
-          That's what Tanisha does.
+        <span className="text-sm text-neutral-500 tracking-normal font-normal mt-5 max-w-[600px]">
+          She advises teams on how power, incentives, and coordination function under real conditions, before and after launch.
         </span>
         <div className="flex mt-5 flex-row gap-2">
           <a
             href="/work"
             className="w-fit text-base font-normal tracking-normal z-50 flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"
           >
-            See case studies <BsArrowRight size={20} />
+            Case Studies <BsArrowRight size={20} />
           </a>
         </div>
       </div>

@@ -64,7 +64,7 @@ const Footer = ({ data }) => {
                 <TooltipTrigger>
                   <a
                     target="_blank"
-                    href="https://www.instagram.com/webwithwaleed"
+                    href="https://waleeddotdev.netlify.app"
                   >
                     Developed by <span className="underline">Waleed</span>
                   </a>

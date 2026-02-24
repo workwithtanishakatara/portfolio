@@ -8,6 +8,7 @@ import { useMediaQuery } from "react-responsive";
 import { Card } from "../working/WorkSearch";
 import { InteractiveGridPattern } from "../ui/InteractiveGridPattern";
 import { cn } from "@/lib/utils";
+import Testimonials from "../Testimonials";
 
 export const useIsMobile = () => {
   const [isSSR, setIsSSR] = useState(true);
@@ -32,7 +33,7 @@ const MainHomePage = ({ data }) => {
 
 export default MainHomePage;
 
-export const MainHomePagePartTwo = ({ data, selectedWork }) => {
+export const MainHomePagePartTwo = ({ data, selectedWork, contactData }) => {
 
   return (
     <div className="w-full">
@@ -55,6 +56,7 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
           </div>
         </div>
       </div>
+      <Testimonials data={contactData} />
       <hr />
       <div className="w-full flex py-10 flex-col lg:flex-row items-center">
         <div className="w-full rounded-xl element relative p-20">
@@ -69,9 +71,9 @@ export const MainHomePagePartTwo = ({ data, selectedWork }) => {
         squaresClassName="hover:fill-blue-500 opacity-30"
       />
        <div className="space-y-2 flex flex-col justify-center items-center lg:space-y-3 w-full">
-            <p className="font-medium text-center text-xl lg:text-2xl">
+            {/* <p className="font-medium text-center text-xl lg:text-2xl">
               {data.cta.subtitle}
-            </p>
+            </p> */}
             <p className="font-semibold text-center text-4xl lg:text-6xl">
               {data.cta.title}
             </p>

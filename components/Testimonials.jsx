@@ -1,0 +1,57 @@
+import { urlFor } from "@/lib/ImageUrl"
+import { MdArrowOutward } from "react-icons/md"
+import Image from "next/image"
+import Marquee from "./ui/InfiniteScroll"
+import SparklesText from "./ui/SparklingText"
+
+
+const Testimonials = ({data}) => {
+    return(
+        <div className="py-20 w-full flex flex-col items-center justify-center">
+          <div className="text-4xl flex flex-row justify-center gap-2 flex-wrap items-center w-full text-center font-semibold">
+            <span className="">Public </span>{" "}
+            <SparklesText className={"text-4xl "} text={"References"} />
+          </div>
+          <div className="relative w-full mt-10">
+            <Marquee pauseOnHover className={`[--duration:40s]`}>
+              {data.testimonials.map((review, index) => (
+                <a
+                  target="_blank"
+                  href={review.link}
+                  key={index}
+                  className="w-[350px] cursor-pointer h-full justify-between flex flex-col gap-12 group p-5 hover:scale-105 transition-all duration-500 bg-slate-100 rounded-2xl"
+                >
+                  <p className="text-sm text-left group-hover:text-neutral-800 transition-all duration-500 text-neutral-600 tracking-tight">
+                    {review.review}
+                  </p>
+                  <div className="flex w-full flex-row items-center justify-between">
+                    <div className="w-full flex flex-row gap-3 items-center justify-start">
+                      <Image
+                        loading="lazy"
+                        width={20}
+                        height={20}
+                        className="rounded-full size-[40px]"
+                        src={urlFor(review.image).url()}
+                      />
+                      <div>
+                        <p className="text-sm text-left text-neutral-600 tracking-tight">
+                          {review.name}
+                        </p>
+                        <p className="text-sm text-left text-neutral-600 tracking-tight">
+                          {review.description}
+                        </p>
+                      </div>
+                    </div>
+                    <MdArrowOutward />
+                  </div>
+                </a>
+              ))}
+            </Marquee>
+            <div className="pointer-events-none opacity-0 md:opacity-100 absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+            <div className="pointer-events-none opacity-0 md:opacity-100 absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+          </div>
+        </div>
+    )
+}
+
+export default Testimonials;

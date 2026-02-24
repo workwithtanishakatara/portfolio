@@ -1,8 +1,14 @@
 import MainHomePage, {
   MainHomePagePartTwo,
 } from "@/components/home/MainHomePage";
+import Marquee from "@/components/ui/InfiniteScroll";
 import { LinkPreview } from "@/components/ui/LinkPreview";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/ToolTip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/ToolTip";
 import { fetchData } from "@/lib/FetchData";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
@@ -73,8 +79,8 @@ const Logos = [
     url: "https://liberdus.com/site/",
     logo: "/assets/logos/liberdus.jpg",
     imageAlt: "Liberdus logo",
-  }
-]
+  },
+];
 
 export default async function Home() {
   const data = await fetchData(
@@ -85,14 +91,41 @@ export default async function Home() {
     "https://9wlw9jiw.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%22workingPage%22%5D%5B0%5D%7B%0A+works%5B0...3%5D%7B%0A++++title%2C%0A++++description%2C%0A++++link%2C%0A++++image%2C%0A++++%22group%22%3A+group%5B%5D-%3E%7B%0A++++++_id%2C%0A++++++name%2C%0A++++++%2F%2F+Add+other+fields+from+the+group+schema+that+you+need%0A++++%7D%2C%0A++++%22subGroup%22%3A+subGroup%5B%5D-%3E%7B%0A++++++_id%2C%0A++++++name%2C%0A++++++%2F%2F+Add+other+fields+from+the+subGroup+schema+that+you+need%0A++++%7D%0A++%7D%0A%7D%0A",
   );
 
+  const contactData = await fetchData(
+    "https://9wlw9jiw.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%22contactPage%22%5D%5B0%5D",
+  );
+
   return (
     <TooltipProvider>
       <main className="flex flex-col justify-center items-center">
-      <div className="max-w-[1200px] py-20">
-        <h1 className="text-lg text-center md:text-xl font-medium">Trusted By</h1>
-        <div className="flex flex-row mt-4 flex-wrap justify-center items-center gap-10">
-        
-      {Logos.map((logo, index)=> (
+        <div className="max-w-[1200px] py-20">
+          <h1 className="text-lg text-center md:text-xl font-medium">
+            Protocols and Organizations Advised
+          </h1>
+          <div className="flex flex-row mt-4 flex-wrap justify-center items-center gap-10">
+            <div className="relative w-full mt-10">
+              <Marquee className={`[--duration:20s]`}>
+                {Logos.map((logo, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-row justify-center items-center gap-10 mr-5"
+                  >
+                    <a href={logo.url} target="_blank">
+                      <Image
+                        src={logo.logo}
+                        width={100}
+                        height={100}
+                        alt={logo.imageAlt}
+                        className="w-26  opacity-50 hover:opacity-100 transition-all duration-300"
+                      />
+                    </a>
+                  </div>
+                ))}
+              </Marquee>
+              <div className="pointer-events-none opacity-0 md:opacity-100 absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+              <div className="pointer-events-none opacity-0 md:opacity-100 absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+            </div>
+            {/* {Logos.map((logo, index)=> (
          <Tooltip key={index} delayDuration={0} >
           <TooltipTrigger>
             <a href={logo.url} target="_blank">
@@ -109,33 +142,37 @@ export default async function Home() {
             <p>{logo.name}</p>
           </TooltipContent>
          </Tooltip>
-      ))}
-        </div>
-      </div>
-      <div className="max-w-[1200px] w-full py-20 p-5">
-        <MainHomePage data={data.cardSection} />
-      </div>
-      <div className="w-full flex flex-col justify-center items-center element">
-        <div className="max-w-[1200px] w-full text-2xl space-y-5 text-neutral-500 font-medium tracking-tight py-40 p-5 ">
-          {/* <TextRevealByWord text="Tanisha's a blockchain whiz who's worked with top companies. Now she's ready to help yours!" /> */}
-          <div className="text-2xl md:pr-3 scrollbar-track-transparent scrollbar-thumb-black/10 scrollbar-corner-red-600 !scrollbar-track-rounded-full !scrollbar-thumb-rounded-full !scrollbar-corner-rounded-full scrollbar-thin md:max-h-[600px] md:overflow-y-scroll text-black/70 flex flex-col gap-10 py-5 font-normal">
-            <PortableText
-              components={{
-                marks: {
-                  link: ({ children, value }) => (
-                    <LinkPreview url={value.href}>{children}</LinkPreview>
-                  ),
-                },
-              }}
-              value={data.text}
-            />
+      ))} */}
           </div>
         </div>
-      </div>
-      <div className="max-w-[1200px] w-full  p-5">
-        <MainHomePagePartTwo selectedWork={selectedWork} data={data} />
-      </div>
-    </main>
+        <div className="max-w-[1200px] w-full py-20 p-5">
+          <MainHomePage data={data.cardSection} />
+        </div>
+        <div className="w-full flex flex-col justify-center items-center element">
+          <div className="max-w-[1200px] w-full text-2xl space-y-5 text-neutral-500 font-medium tracking-tight py-40 p-5 ">
+            {/* <TextRevealByWord text="Tanisha's a blockchain whiz who's worked with top companies. Now she's ready to help yours!" /> */}
+            <div className="text-2xl md:pr-3 scrollbar-track-transparent scrollbar-thumb-black/10 scrollbar-corner-red-600 !scrollbar-track-rounded-full !scrollbar-thumb-rounded-full !scrollbar-corner-rounded-full scrollbar-thin md:max-h-[600px] md:overflow-y-scroll text-black/70 flex flex-col gap-10 py-5 font-normal">
+              <PortableText
+                components={{
+                  marks: {
+                    link: ({ children, value }) => (
+                      <LinkPreview url={value.href}>{children}</LinkPreview>
+                    ),
+                  },
+                }}
+                value={data.text}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="max-w-[1200px] w-full  p-5">
+          <MainHomePagePartTwo
+            contactData={contactData}
+            selectedWork={selectedWork}
+            data={data}
+          />
+        </div>
+      </main>
     </TooltipProvider>
   );
 }

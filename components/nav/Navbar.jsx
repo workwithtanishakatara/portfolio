@@ -24,7 +24,7 @@ const Navbar = ({ data, homeData }) => {
         <div className="w-full flex flex-row justify-between items-center">
           <div className="">
             <a href={"/"} className="font-semibold text-xl md:text-2xl">
-              Tanisha Katara
+              Katara Consulting Group
             </a>
           </div>
           <div className="hidden md:flex flex-row items-center gap-[35px]">

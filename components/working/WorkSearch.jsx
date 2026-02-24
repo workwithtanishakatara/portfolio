@@ -131,6 +131,7 @@ const WorkSearch = ({ data }) => {
         <p className="text-3xl font-semibold">{data.workText}</p>
       </div>
       <div className="space-y-5">
+        <p className="text-sm text-neutral-500 tracking-normal">AREAS OF FOCUS</p>
         <Tags
           selectedTag={selectedTag}
           setSelectedTag={setSelectedTag}
