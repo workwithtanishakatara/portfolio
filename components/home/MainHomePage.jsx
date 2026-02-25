@@ -70,7 +70,7 @@ export const MainHomePagePartTwo = ({ data, selectedWork, contactData }) => {
         squares={[80, 80]}
         squaresClassName="hover:fill-blue-500 opacity-30"
       />
-       <div className="space-y-2 flex flex-col justify-center items-center lg:space-y-3 w-full">
+       <div className="space-y-4 flex flex-col justify-center items-center lg:space-y-6 w-full">
             {/* <p className="font-medium text-center text-xl lg:text-2xl">
               {data.cta.subtitle}
             </p> */}
