@@ -9,8 +9,8 @@ const Testimonials = ({data}) => {
     return(
         <div className="py-20 w-full flex flex-col items-center justify-center">
           <div className="text-4xl flex flex-row justify-center gap-2 flex-wrap items-center w-full text-center font-semibold">
-            <span className="">Public </span>{" "}
-            <SparklesText className={"text-4xl "} text={"References"} />
+            <span className="">Public References </span>
+            {/* <SparklesText className={"text-4xl "} text={"References"} /> */}
           </div>
           <div className="relative w-full mt-10">
             <Marquee pauseOnHover className={`[--duration:40s]`}>

@@ -233,7 +233,7 @@ export const Card = ({ work }) => {
           <div className="flex flex-col justify-center items-center gap-2 ">
             <div className="size-32  flex  justify-center items-center">
               <img
-                className="w-full  object-cover"
+                className="w-full rounded-xl object-cover"
                 src={work.imageUrl || urlFor(work.image).url()}
                 alt=""
               />

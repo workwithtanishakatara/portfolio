@@ -84,7 +84,7 @@ const Footer = ({ data }) => {
                   width={15}
                   height={15}
                   loading="lazy"
-                  className="size-[20px]"
+                  className="size-[20px] invert"
                   src={urlFor(link.icon).url()}
                 />
               </Link>

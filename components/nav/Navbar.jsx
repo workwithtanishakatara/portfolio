@@ -17,7 +17,7 @@ const Navbar = ({ data, homeData }) => {
         <div className="w-full hidden md:flex flex-row justify-end items-center gap-2">
           {data.socialLinks.socialLinks.map((link, index) => (
             <a target="_blank" href={link.link}>
-              <img className="size-[20px]" src={urlFor(link.icon).url()} />
+              <img className="size-[20px] invert" src={urlFor(link.icon).url()} />
             </a>
           ))}
         </div>
@@ -60,7 +60,7 @@ const Navbar = ({ data, homeData }) => {
             </Link>
           </div>
           <div onClick={() => setOpen(true)} className="flex md:hidden">
-            <div className="border border-black py-1.5 px-3 rounded-full">
+            <div className="border border-white py-1.5 px-3 rounded-full">
               <RxHamburgerMenu size={20} />
             </div>
           </div>
@@ -124,7 +124,7 @@ const Navbar = ({ data, homeData }) => {
             <div className="w-full flex flex-row justify-start items-center gap-2">
               {data.socialLinks.socialLinks.map((link, index) => (
                 <a target="_blank" href={link.link}>
-                  <img className="size-[20px]" src={urlFor(link.icon).url()} />
+                  <img className="size-[20px] invert" src={urlFor(link.icon).url()} />
                 </a>
               ))}
             </div>

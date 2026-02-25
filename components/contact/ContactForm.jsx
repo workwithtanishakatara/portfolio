@@ -43,6 +43,7 @@ const ContactForm = ({data}) => {
           <p className="max-w-[450px]">
             {data.contactDescription}
           </p>
+          
         </div>
         <div className="w-full">
           <form

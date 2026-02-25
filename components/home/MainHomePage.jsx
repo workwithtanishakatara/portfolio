@@ -37,7 +37,7 @@ export const MainHomePagePartTwo = ({ data, selectedWork, contactData }) => {
 
   return (
     <div className="w-full">
-      <div className="w-full flex flex-col py-20 justify-center items-center">
+      <div className="w-full flex flex-col pt-20 justify-center items-center">
         <div className="flex w-full flex-row justify-between gap-5 items-center">
           <p className="text-2xl md:text-5xl font-semibold">Selected works</p>
           <Link
@@ -84,7 +84,7 @@ export const MainHomePagePartTwo = ({ data, selectedWork, contactData }) => {
         window.openCalendlyPopup();
       }}
               target="_blank"
-              className="w-fit z-50 flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-black hover:text-white transition-all duration-300 border-black rounded-full"
+              className="w-fit z-50 flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-white hover:text-black transition-all duration-300 border-white rounded-full"
             >
               {data.cta.buttonText} <BsArrowRight size={20} />
             </a>
