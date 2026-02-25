@@ -88,7 +88,7 @@ export const LinkPreview = ({
       >
         <HoverCardPrimitive.Trigger
           onMouseMove={handleMouseMove}
-          className={cn("text-black underline font-semibold hover:text-black/30 transition-all duration-300", className)}
+          className={cn(" underline font-semibold hover:opacity-30 transition-all duration-300", className)}
           href={url}
           target="_blank"
         >

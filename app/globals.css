@@ -22,9 +22,10 @@ body{
 }
 
 .element {
-    background-color: #f0f0f0;
-    transition: background-color 2s ease-in-out;
-    animation: color-cycle 20s infinite;
+    background-color: #1B2A39;
+    color: #ffffff;
+    /* transition: background-color 2s ease-in-out; */
+    /* animation: color-cycle 20s infinite; */
   }
   
   @keyframes color-cycle {

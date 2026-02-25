@@ -151,13 +151,14 @@ export default async function Home() {
         <div className="w-full flex flex-col justify-center items-center element">
           <div className="max-w-[1200px] w-full text-2xl space-y-5 text-neutral-500 font-medium tracking-tight py-40 p-5 ">
             {/* <TextRevealByWord text="Tanisha's a blockchain whiz who's worked with top companies. Now she's ready to help yours!" /> */}
-            <div className="text-2xl md:pr-3 scrollbar-track-transparent scrollbar-thumb-black/10 scrollbar-corner-red-600 !scrollbar-track-rounded-full !scrollbar-thumb-rounded-full !scrollbar-corner-rounded-full scrollbar-thin md:max-h-[600px] md:overflow-y-scroll text-black/70 flex flex-col gap-10 py-5 font-normal">
+            <div className="text-2xl md:pr-3 scrollbar-track-transparent scrollbar-thumb-black/10 scrollbar-corner-red-600 !scrollbar-track-rounded-full !scrollbar-thumb-rounded-full !scrollbar-corner-rounded-full scrollbar-thin md:max-h-[600px] md:overflow-y-scroll text-white flex flex-col gap-10 py-5 font-normal">
               <PortableText
                 components={{
                   marks: {
                     link: ({ children, value }) => (
                       <LinkPreview url={value.href}>{children}</LinkPreview>
                     ),
+                    emphasis: ({ children }) => <p className="text-xl ">{children}</p>,
                   },
                 }}
                 value={data.text}
