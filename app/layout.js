@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import Providers from "@/components/ProgressBar";
 import { fetchData } from "@/lib/FetchData";
 import Script from "next/script";
-import ogImage from "@/public/assets/opengraph-image.png";
 import CalendlyPopupNative from "@/components/ui/CalendlyPopupNative";
 
 const inter = Poppins({
@@ -18,7 +17,7 @@ export const metadata = {
   title: "Tanisha Katara’s Website",
   metadataBase: new URL("https://tanishakatara.com"),
   description:
-    "Tanisha Katara is an independent blockchain consultant with 5 years of experience, specializing in governance, technical research, and business strategy.",
+    "Katara Consulting Group (KCG) Blockchain governance strategist & researcher. Power distribution, staking design, and Al-driven coordination. Turning protocol complexity into resilient systems.",
   other: {
     keywords:
       "Blockchain consultant, Governance, Blockchain governance, Web3 adoption, DAO tooling, Crypto payments Product management, Technical research, Polygon Technology, Juno Finance, Independent consultant, Blockchain expert, Layer2, Crypto-friendly neobank, Blockchain keynote speaker",
