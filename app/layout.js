@@ -83,7 +83,7 @@ export default async function RootLayout({ children }) {
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
       </head>
-      <body className={cn(inter.className, "!tracking-tight")}>
+      <body className={cn(inter.className, "!tracking-tight overflow-x-hidden")}>
         <Navbar homeData={homeData} data={navbarData} />
         <Providers>{children}</Providers>
         <Footer data={navbarData} />

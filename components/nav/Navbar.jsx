@@ -12,7 +12,7 @@ const Navbar = ({ data, homeData }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="flex element flex-col justify-center items-center w-screec ">
+    <nav className="flex element flex-col justify-center items-center w-full ">
       <div className="flex max-w-[1200px] w-full flex-col justify-center items-center p-5 gap-1">
         <div className="w-full hidden md:flex flex-row justify-end items-center gap-2">
           {data.socialLinks.socialLinks.map((link, index) => (
