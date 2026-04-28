@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+  trailingSlash: true,
   images: {
+    unoptimized: true,
     // domains: [
     //   "images.unsplash.com",
     //   "api.microlink.io",
@@ -33,21 +36,6 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
-  },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        has: [
-          {
-            type: "query",
-            key: "trk",
-          },
-        ],
-        destination: "/",
-        permanent: true,
-      },
-    ];
   },
 };
 

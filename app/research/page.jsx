@@ -1,7 +1,7 @@
+import { PortableText } from "@portabletext/react";
 import WritingItem from "@/components/writing/WritingItem";
 import { fetchData } from "@/lib/FetchData";
 import { urlFor } from "@/lib/ImageUrl";
-import { PortableText } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

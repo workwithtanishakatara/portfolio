@@ -9,8 +9,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/ToolTip";
+import { PortableText } from "@portabletext/react";
 import { fetchData } from "@/lib/FetchData";
-import { PortableText } from "next-sanity";
 import Image from "next/image";
 
 const Logos = [

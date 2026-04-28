@@ -4,34 +4,51 @@ import React, { useState } from "react";
 import { MdDone } from "react-icons/md";
 import { Dialog, DialogContent } from "@/components/ui/Dialog";
 
-const ContactForm = ({data}) => {
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+
+const ContactForm = ({ data }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [open, setOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function handleSubmit(event) {
     event.preventDefault();
-
     setIsSubmitting(true);
+    setErrorMessage("");
 
     const formData = new FormData(event.target);
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      setIsSubmitting(false);
+      setErrorMessage("Contact form is not configured yet. Please try again soon.");
+      return;
+    }
+
+    formData.append("access_key", accessKey);
+    formData.append("subject", "New portfolio contact submission");
+    formData.append("from_name", "tanishakatara.eth.limo");
+    formData.append("replyto", formData.get("email"));
+    formData.append("botcheck", "");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
         body: formData,
       });
-
-      if (!response.ok) {
-        throw new Error(`response status: ${response.status}`);
-      }
       const responseData = await response.json();
-      setIsSubmitting(false);
-      event.target.reset(); 
 
+      if (!response.ok || !responseData.success) {
+        throw new Error(responseData.message || `response status: ${response.status}`);
+      }
+
+      event.target.reset();
       setOpen(true);
     } catch (err) {
       console.error(err);
-      alert("Error, please try resubmitting the form");
+      setErrorMessage("Something went wrong. Please try resubmitting the form.");
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -56,7 +73,7 @@ const ContactForm = ({data}) => {
             <label>Name</label>
             <input
               disabled={isSubmitting}
-              name="name" // Add name attribute
+              name="name"
               className="bg-slate-100 border border-slate-300/70 p-3 rounded-xl"
               type="text"
               required
@@ -64,15 +81,15 @@ const ContactForm = ({data}) => {
             <label>Email</label>
             <input
               disabled={isSubmitting}
-              name="email" // Add name attribute
+              name="email"
               className="bg-slate-100 border border-slate-300/70 p-3 rounded-xl"
               type="email"
               required
             />
-             <label>Company</label>
+            <label>Company</label>
             <input
               disabled={isSubmitting}
-              name="company" // Add name attribute
+              name="company"
               className="bg-slate-100 border border-slate-300/70 p-3 rounded-xl"
               type="text"
               required
@@ -80,18 +97,28 @@ const ContactForm = ({data}) => {
             <label>Message</label>
             <textarea
               disabled={isSubmitting}
-              name="message" // Add name attribute
+              name="message"
               rows={10}
               className="bg-slate-100 border border-slate-300/70 !resize-none p-3 rounded-xl"
               required
+            />
+            <input
+              type="checkbox"
+              name="botcheck"
+              className="hidden"
+              tabIndex="-1"
+              autoComplete="off"
             />
             <button
               type="submit"
               disabled={isSubmitting}
               className="bg-black mt-2 hover:bg-black/70 text-white p-3 rounded-xl"
             >
-              Submit
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
+            {errorMessage ? (
+              <p className="mt-2 text-sm text-red-600">{errorMessage}</p>
+            ) : null}
           </form>
         </div>
       </div>
