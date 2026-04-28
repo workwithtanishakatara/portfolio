@@ -52,7 +52,7 @@ const Logos = [
   },
   {
     url: "https://www.junofinance.com/",
-    logo: "/assets/logos/juno.png",
+    logo: "/assets/logos/Juno.png",
     name: "Juno",
     imageAlt: "Juno logo",
   },
