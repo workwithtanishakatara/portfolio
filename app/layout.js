@@ -1,4 +1,3 @@
-import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/footer/Footer";
@@ -7,11 +6,6 @@ import Providers from "@/components/ProgressBar";
 import { fetchData } from "@/lib/FetchData";
 import Script from "next/script";
 import CalendlyPopupNative from "@/components/ui/CalendlyPopupNative";
-
-const inter = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
 
 export const metadata = {
   title: "Tanisha Katara’s Website",
@@ -83,7 +77,7 @@ export default async function RootLayout({ children }) {
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
       </head>
-      <body className={cn(inter.className, "!tracking-tight overflow-x-hidden")}>
+      <body className={cn("!tracking-tight overflow-x-hidden")}>
         <Navbar homeData={homeData} data={navbarData} />
         <Providers>{children}</Providers>
         <Footer data={navbarData} />

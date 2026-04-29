@@ -9,8 +9,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/ToolTip";
+import { PortableText } from "@portabletext/react";
 import { fetchData } from "@/lib/FetchData";
-import { PortableText } from "next-sanity";
 import Image from "next/image";
 
 const Logos = [
@@ -52,7 +52,7 @@ const Logos = [
   },
   {
     url: "https://www.junofinance.com/",
-    logo: "/assets/logos/juno.png",
+    logo: "/assets/logos/Juno.png",
     name: "Juno",
     imageAlt: "Juno logo",
   },

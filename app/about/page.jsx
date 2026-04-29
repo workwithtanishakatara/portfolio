@@ -3,7 +3,7 @@ import Marquee from "@/components/ui/InfiniteScroll";
 import { LinkPreview } from "@/components/ui/LinkPreview";
 import { fetchData } from "@/lib/FetchData";
 import { urlFor } from "@/lib/ImageUrl";
-import { PortableText } from "next-sanity";
+import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
