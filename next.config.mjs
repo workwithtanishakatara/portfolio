@@ -34,6 +34,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/legoland",
+        destination: "/legoland/index.html",
+      },
+    ];
+  },
   async redirects() {
     return [
       {
