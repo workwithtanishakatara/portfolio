@@ -1,9 +1,14 @@
 
 import SpeakingVideoItem from "@/components/speaking/SpeakingVideoItem";
-import Team from "@/components/working/Team";
 import WorkSearch from "@/components/working/WorkSearch";
 import { fetchData } from "@/lib/FetchData";
 import React from "react";
+
+export const metadata = {
+  title: "Work",
+  description:
+    "Selected AI, product, blockchain infrastructure, governance, validator, privacy, and mechanism-design work by Tanisha Katara.",
+};
 
 const page = async () => {
   const data = await fetchData(
@@ -14,7 +19,6 @@ const page = async () => {
     <main className="flex flex-col   justify-center items-center">
       <div className="max-w-[1200px] overflow-x-hidden w-full py-20 p-5">
         <WorkSearch data={data} />
-        <Team data={data} />
         <div className="pt-20 w-full pb-20">
           <div className="flex flex-col justify-center items-center gap-14">
             <h1 className=" text-4xl md:text-6xl  font-semibold text-left md:text-center capitalize">

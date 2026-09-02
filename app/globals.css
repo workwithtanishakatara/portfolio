@@ -4,6 +4,11 @@
 
 html{
   height: 100%;
+  scroll-behavior: smooth;
+}
+
+* {
+  letter-spacing: 0 !important;
 }
 
 .ReactFlipCard__container{
@@ -13,7 +18,6 @@ html{
 }
 
 body{
-  scroll-behavior: smooth;
     height: 100%;
     width: 100vw !important;
     overflow-x: hidden !important;
@@ -27,6 +31,22 @@ body{
     /* transition: background-color 2s ease-in-out; */
     /* animation: color-cycle 20s infinite; */
   }
+
+.hero-portrait {
+  object-position: 74% center;
+}
+
+::selection {
+  background: #63e6be;
+  color: #132331;
+}
+
+@media (max-width: 767px) {
+  .hero-portrait {
+    object-position: 100% center;
+    opacity: 0.58;
+  }
+}
   
   @keyframes color-cycle {
     0% { background-color: #eff8ff; } 
@@ -38,4 +58,3 @@ body{
     85% { background-color: #F9F4FF; }
     100% { background-color: #eff8ff; } 
   }
-  

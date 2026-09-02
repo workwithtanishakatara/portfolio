@@ -8,16 +8,28 @@ import { motion } from "framer-motion";
 import Header from "../speaking/Header";
 import { urlFor } from "@/lib/ImageUrl";
 
-const Navbar = ({ data, homeData }) => {
+const Navbar = ({ data }) => {
   const [open, setOpen] = useState(false);
+  const socialLinks = data?.socialLinks?.socialLinks || [];
 
   return (
     <nav className="flex element flex-col justify-center items-center w-full ">
       <div className="flex max-w-[1200px] w-full flex-col justify-center items-center p-5 gap-1">
         <div className="w-full hidden md:flex flex-row justify-end items-center gap-2">
-          {data.socialLinks.socialLinks.map((link, index) => (
-            <a target="_blank" href={link.link}>
-              <img className="size-[20px] invert" src={urlFor(link.icon).url()} />
+          {socialLinks.map((link, index) => (
+            <a
+              key={link._key || link.link || index}
+              target="_blank"
+              rel="noreferrer noopener"
+              href={link.link}
+              aria-label={`Open social profile ${index + 1}`}
+              className="flex size-8 items-center justify-center rounded-md transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+            >
+              <img
+                className="size-[18px] invert"
+                src={urlFor(link.icon).url()}
+                alt=""
+              />
             </a>
           ))}
         </div>
@@ -59,14 +71,20 @@ const Navbar = ({ data, homeData }) => {
               Contact
             </Link>
           </div>
-          <div onClick={() => setOpen(true)} className="flex md:hidden">
-            <div className="border border-white py-1.5 px-3 rounded-full">
+          <button
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded={open}
+            onClick={() => setOpen(true)}
+            className="flex md:hidden"
+          >
+            <span className="flex size-10 items-center justify-center rounded-md border border-white/60">
               <RxHamburgerMenu size={20} />
-            </div>
-          </div>
+            </span>
+          </button>
         </div>
       </div>
-      <Header homeData={homeData} data={data} />
+      <Header />
       <motion.div
         initial={{ x: "100%" }}
         animate={{ x: open ? 0 : "100%" }}
@@ -74,12 +92,14 @@ const Navbar = ({ data, homeData }) => {
         className="w-screen z-50 h-screen overflow-hidden element fixed top-0"
       >
         <div className="w-full h-full relative p-3">
-          <div
+          <button
+            type="button"
+            aria-label="Close navigation"
             onClick={() => setOpen(false)}
             className="w-full flex justify-end"
           >
             <IoCloseCircleSharp size={35} />
-          </div>
+          </button>
           <div className="w-full h-full pb-14 gap-2 flex justify-center items-start flex-col">
             <Link
               onClick={() => setOpen(false)}
@@ -88,7 +108,7 @@ const Navbar = ({ data, homeData }) => {
             >
               About
             </Link>
-            <div className="w-full h-[1px] bg-black opacity-10"></div>
+            <div className="w-full h-px bg-white/10"></div>
             <Link
               onClick={() => setOpen(false)}
               className="text-4xl font-semibold"
@@ -96,7 +116,7 @@ const Navbar = ({ data, homeData }) => {
             >
               Speaking
             </Link>
-            <div className="w-full h-[1px] bg-black opacity-10"></div>
+            <div className="w-full h-px bg-white/10"></div>
             <Link
               onClick={() => setOpen(false)}
               className="text-4xl font-semibold"
@@ -104,7 +124,7 @@ const Navbar = ({ data, homeData }) => {
             >
               Research
             </Link>
-            <div className="w-full h-[1px] bg-black opacity-10"></div>
+            <div className="w-full h-px bg-white/10"></div>
             <Link
               onClick={() => setOpen(false)}
               className="text-4xl font-semibold"
@@ -112,7 +132,7 @@ const Navbar = ({ data, homeData }) => {
             >
               Work
             </Link>
-            <div className="w-full h-[1px] bg-black opacity-10"></div>
+            <div className="w-full h-px bg-white/10"></div>
             <Link
               onClick={() => setOpen(false)}
               className="text-4xl font-semibold"
@@ -120,11 +140,22 @@ const Navbar = ({ data, homeData }) => {
             >
               Contact
             </Link>
-            <div className="w-full h-[1px] bg-black opacity-10"></div>
+            <div className="w-full h-px bg-white/10"></div>
             <div className="w-full flex flex-row justify-start items-center gap-2">
-              {data.socialLinks.socialLinks.map((link, index) => (
-                <a target="_blank" href={link.link}>
-                  <img className="size-[20px] invert" src={urlFor(link.icon).url()} />
+              {socialLinks.map((link, index) => (
+                <a
+                  key={link._key || link.link || index}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href={link.link}
+                  aria-label={`Open social profile ${index + 1}`}
+                  className="flex size-10 items-center justify-center rounded-md border border-white/20"
+                >
+                  <img
+                    className="size-[20px] invert"
+                    src={urlFor(link.icon).url()}
+                    alt=""
+                  />
                 </a>
               ))}
             </div>

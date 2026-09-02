@@ -1,86 +1,106 @@
-import MainHomePage, {
-  MainHomePagePartTwo,
-} from "@/components/home/MainHomePage";
-import Marquee from "@/components/ui/InfiniteScroll";
-import { LinkPreview } from "@/components/ui/LinkPreview";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/ToolTip";
+import Testimonials from "@/components/Testimonials";
 import { fetchData } from "@/lib/FetchData";
+import { urlFor } from "@/lib/ImageUrl";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
+import Link from "next/link";
+import { BsArrowRight } from "react-icons/bs";
+import { FiExternalLink, FiGithub } from "react-icons/fi";
 
-const Logos = [
+const logos = [
+  ["Ethereum", "https://ethereum.org/", "/assets/logos/ethereum.png"],
+  ["Polygon", "https://polygon.technology/", "/assets/logos/polygon.png"],
+  ["Avail", "https://avail.io/", "/assets/logos/avail.webp"],
+  ["Filecoin", "https://filecoin.io/", "/assets/logos/filecoin.png"],
+  ["Mina", "https://minaprotocol.com/", "/assets/logos/mina.png"],
+  ["Aragon", "https://aragon.org/", "/assets/logos/Aragon.png"],
+  ["Juno", "https://www.junofinance.com/", "/assets/logos/Juno.png"],
+  ["DaoLens", "https://daolens.io/", "/assets/logos/DaoLens.webp"],
+];
+
+const metrics = [
+  ["8+ years", "Across strategy, product, and technical delivery"],
+  ["11+ clients", "Built through referrals and long-term relationships"],
+  ["100%", "Client renewal or contract-extension rate"],
+  ["2M+ users", "Reached through the Polygon Governance Hub"],
+];
+
+const practices = [
   {
-    url: "https://ethereum.org/",
-    logo: "/assets/logos/ethereum.png",
-    name: "Ethereum",
-    imageAlt: "Ethereum Gov AI Agent logo",
+    label: "AI systems",
+    color: "#087F5B",
+    title: "From model capability to useful workflow.",
+    description:
+      "Agent workflows, identity and accountability, LLM cost economics, technical discovery, evaluation logic, and deployment strategy.",
+    examples: "cacheeconomics, Ethereum governance AI, Moltbook consensus research, and AI-agent identity research.",
   },
   {
-    url: "https://polygon.technology/",
-    logo: "/assets/logos/polygon.png",
-    name: "Polygon",
-    imageAlt: "Polygon logo",
-  },
-  {
-    name: "Avail",
-    url: "https://avail.io/",
-    logo: "/assets/logos/avail.webp",
-    imageAlt: "Avail logo",
-  },
-  {
-    name: "Filecoin",
-    url: "https://filecoin.io/",
-    logo: "/assets/logos/filecoin.png",
-    imageAlt: "Filecoin logo",
-  },
-  {
-    name: "MINA",
-    url: "https://minaprotocol.com/",
-    logo: "/assets/logos/mina.png",
-    imageAlt: "Mina logo",
-  },
-  {
-    url: "https://aragon.org/",
-    logo: "/assets/logos/Aragon.png",
-    name: "Aragon",
-    imageAlt: "Aragon logo",
-  },
-  {
-    url: "https://www.junofinance.com/",
-    logo: "/assets/logos/juno.png",
-    name: "Juno",
-    imageAlt: "Juno logo",
-  },
-  {
-    url: "https://daolens.io/",
-    logo: "/assets/logos/DaoLens.webp",
-    name: "DaoLens",
-    imageAlt: "DaoLens logo",
-  },
-  {
-    name: "DaoCals",
-    url: "https://www.linkedin.com/company/thetrackapp?trk=public_post-text",
-    logo: "/assets/logos/daocals.png",
-    imageAlt: "DaoCals logo",
-  },
-  {
-    name: "InstiX",
-    url: "https://instix.io/",
-    logo: "/assets/logos/instix.jpg",
-    imageAlt: "InstiX logo",
-  },
-  {
-    name: "Liberdus",
-    url: "https://liberdus.com/site/",
-    logo: "/assets/logos/liberdus.jpg",
-    imageAlt: "Liberdus logo",
+    label: "Blockchain infrastructure",
+    color: "#E03131",
+    title: "From mechanism design to live operation.",
+    description:
+      "Governance, validators, staking, privacy, payments, treasury systems, protocol launches, and crypto-economic design.",
+    examples: "Filecoin, Polygon, Avail, Mina, Aragon, Juno, Ethereum, and early-stage infrastructure teams.",
   },
 ];
+
+const cacheLinks = {
+  essay: "https://commodiverus388593.substack.com/p/cache-economics-how-to-stop-paying",
+  github: "https://github.com/Tanisha-Katara/cacheeconomics",
+};
+
+function ExternalLink({ href, children, icon: Icon = FiExternalLink }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="inline-flex min-h-11 items-center gap-2 rounded-md border border-black/20 px-4 py-2 text-sm font-medium transition-colors hover:border-black hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+    >
+      {children} <Icon aria-hidden="true" />
+    </a>
+  );
+}
+
+function WorkPreview({ work }) {
+  const image = work.image ? urlFor(work.image).width(900).height(560).url() : null;
+
+  return (
+    <article className="border-t border-black/15 py-7">
+      <div className="grid gap-6 md:grid-cols-[180px_1fr]">
+        {image && (
+          <img
+            src={image}
+            alt=""
+            loading="lazy"
+            className="h-[150px] w-full rounded-md object-cover"
+          />
+        )}
+        <div>
+          <div className="mb-3 flex flex-wrap gap-x-3 gap-y-1 text-xs font-semibold uppercase text-black/50">
+            {(work.group || []).map((group) => (
+              <span key={group._id || group.name}>{group.name}</span>
+            ))}
+          </div>
+          <h3 className="text-2xl font-semibold leading-tight">{work.title}</h3>
+          <p className="mt-3 max-w-[680px] text-sm leading-relaxed text-black/65 md:text-base">
+            {work.description}
+          </p>
+          {work.link && (
+            <a
+              href={work.link}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline decoration-black/30 underline-offset-4 hover:decoration-black"
+            >
+              View project <FiExternalLink aria-hidden="true" />
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
 
 export default async function Home() {
   const data = await fetchData(
@@ -88,91 +108,197 @@ export default async function Home() {
   );
 
   const selectedWork = await fetchData(
-    "https://9wlw9jiw.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%22workingPage%22%5D%5B0%5D%7B%0A+works%5B0...3%5D%7B%0A++++title%2C%0A++++description%2C%0A++++link%2C%0A++++image%2C%0A++++%22group%22%3A+group%5B%5D-%3E%7B%0A++++++_id%2C%0A++++++name%2C%0A++++++%2F%2F+Add+other+fields+from+the+group+schema+that+you+need%0A++++%7D%2C%0A++++%22subGroup%22%3A+subGroup%5B%5D-%3E%7B%0A++++++_id%2C%0A++++++name%2C%0A++++++%2F%2F+Add+other+fields+from+the+subGroup+schema+that+you+need%0A++++%7D%0A++%7D%0A%7D%0A",
+    "https://9wlw9jiw.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%22workingPage%22%5D%5B0%5D%7B%0A+works%5B0...3%5D%7B%0A++++title%2C%0A++++description%2C%0A++++link%2C%0A++++image%2C%0A++++%22group%22%3A+group%5B%5D-%3E%7B%0A++++++_id%2C%0A++++++name%2C%0A++++%7D%2C%0A++++%22subGroup%22%3A+subGroup%5B%5D-%3E%7B%0A++++++_id%2C%0A++++++name%2C%0A++++%7D%0A++%7D%0A%7D%0A",
   );
 
   const contactData = await fetchData(
     "https://9wlw9jiw.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%22contactPage%22%5D%5B0%5D",
   );
 
+  const publicProof = data?.text?.slice(2) || [];
+
   return (
-    <TooltipProvider>
-      <main className="flex flex-col justify-center items-center ">
-        <div className="max-w-[1200px] py-20 ">
-          <h1 className="text-lg text-center md:text-xl font-medium ">
-            Protocols and Organizations Advised
-          </h1>
-          <div className="flex flex-row mt-4 flex-wrap justify-center items-center gap-10">
-            <div className="relative w-full mt-10 max-w-[100vw] overflow-hidden">
-              <Marquee className={`[--duration:20s]`}>
-                {Logos.map((logo, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-row justify-center items-center gap-10 mr-5"
-                  >
-                    <a href={logo.url} target="_blank">
-                      <Image
-                        src={logo.logo}
-                        width={100}
-                        height={100}
-                        alt={logo.imageAlt}
-                        className="w-26  opacity-50 hover:opacity-100 transition-all duration-300"
-                      />
+    <main>
+      <section className="border-b border-black/10 bg-white">
+        <div className="mx-auto grid w-full max-w-[1200px] grid-cols-2 px-5 py-10 md:grid-cols-4 md:py-12">
+          {metrics.map(([value, description], index) => (
+            <div
+              key={value}
+              className={`py-4 pr-4 md:py-0 ${index > 0 ? "md:border-l md:border-black/10 md:pl-6" : ""}`}
+            >
+              <p className="text-2xl font-semibold md:text-3xl">{value}</p>
+              <p className="mt-2 max-w-[220px] text-xs leading-relaxed text-black/55 md:text-sm">
+                {description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto w-full max-w-[1200px] px-5 py-16 md:py-20">
+          <p className="text-center text-sm font-semibold uppercase text-black/45">
+            Protocols and organizations advised
+          </p>
+          <div className="mt-9 grid grid-cols-3 items-center gap-x-8 gap-y-10 sm:grid-cols-4 md:grid-cols-8">
+            {logos.map(([name, href, logo]) => (
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={name}
+                className="flex h-12 items-center justify-center opacity-45 grayscale transition hover:opacity-100 hover:grayscale-0 focus-visible:opacity-100"
+              >
+                <Image
+                  src={logo}
+                  width={110}
+                  height={56}
+                  alt={`${name} logo`}
+                  className="max-h-11 w-auto object-contain"
+                />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-black/10 bg-[#F4F7F6]">
+        <div className="mx-auto w-full max-w-[1200px] px-5 py-16 md:py-24">
+          <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
+            <div>
+              <p className="text-sm font-semibold uppercase text-black/45">The practice</p>
+              <h2 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">
+                Two technical domains. One way of working.
+              </h2>
+              <p className="mt-5 max-w-[500px] leading-relaxed text-black/60">
+                Start with the actual workflow, incentives, and constraints. Then design the product, mechanism, or operating model that can survive contact with users.
+              </p>
+            </div>
+            <div className="grid gap-8 sm:grid-cols-2">
+              {practices.map((practice) => (
+                <article key={practice.label} className="border-t-4 pt-5" style={{ borderColor: practice.color }}>
+                  <p className="text-sm font-semibold uppercase" style={{ color: practice.color }}>
+                    {practice.label}
+                  </p>
+                  <h3 className="mt-3 text-2xl font-semibold leading-tight">{practice.title}</h3>
+                  <p className="mt-4 text-sm leading-relaxed text-black/65">{practice.description}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-black/45">{practice.examples}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto w-full max-w-[1200px] px-5 py-16 md:py-24">
+          <div className="flex flex-col justify-between gap-5 border-b border-black/15 pb-7 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-sm font-semibold uppercase text-[#087F5B]">Applied AI</p>
+              <h2 className="mt-3 text-4xl font-semibold md:text-5xl">cacheeconomics</h2>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <ExternalLink href={cacheLinks.essay}>Read the launch essay</ExternalLink>
+              <ExternalLink href={cacheLinks.github} icon={FiGithub}>View on GitHub</ExternalLink>
+            </div>
+          </div>
+          <div className="grid gap-8 py-8 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
+            <p className="max-w-[720px] text-2xl font-medium leading-snug md:text-3xl">
+              A local Python tool that turns opaque LLM prompt-cache spend into a concrete list of technical fixes.
+            </p>
+            <p className="text-sm leading-relaxed text-black/60 md:text-base">
+              It separates fresh input, cache reads, and cache writes; reconciles costs to provider bills; and identifies TTL, marker-placement, model-switch, and prefix-reuse problems. It supports Claude Code transcripts, LiteLLM logs, Bedrock, Vertex, and request exports without sending local prompt data over the network.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-black/10 bg-[#FAFAF9]">
+        <div className="mx-auto w-full max-w-[1200px] px-5 py-16 md:py-24">
+          <div className="flex items-end justify-between gap-5 pb-7">
+            <div>
+              <p className="text-sm font-semibold uppercase text-black/45">Selected work</p>
+              <h2 className="mt-3 text-4xl font-semibold md:text-5xl">Research that ships. Products that hold up.</h2>
+            </div>
+            <Link
+              href="/work"
+              className="hidden min-h-11 items-center gap-2 rounded-md border border-black/20 px-4 py-2 text-sm font-medium transition-colors hover:border-black hover:bg-black hover:text-white sm:inline-flex"
+            >
+              View all <BsArrowRight aria-hidden="true" />
+            </Link>
+          </div>
+          {(selectedWork?.works || []).map((work) => (
+            <WorkPreview key={work.title} work={work} />
+          ))}
+          <Link
+            href="/work"
+            className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md border border-black/20 px-4 py-2 text-sm font-medium sm:hidden"
+          >
+            View all <BsArrowRight aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto grid w-full max-w-[1200px] gap-10 px-5 py-16 md:grid-cols-[0.7fr_1.3fr] md:py-24">
+          <div>
+            <p className="text-sm font-semibold uppercase text-black/45">Public record</p>
+            <h2 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">
+              Research, media, and ideas in public.
+            </h2>
+            <div className="mt-6 flex gap-5 text-sm font-semibold">
+              <Link href="/research" className="underline underline-offset-4">Research</Link>
+              <Link href="/speaking" className="underline underline-offset-4">Speaking</Link>
+            </div>
+          </div>
+          <div className="public-proof space-y-7 border-t border-black/15 pt-7 md:border-l md:border-t-0 md:pl-10 md:pt-0">
+            <PortableText
+              value={publicProof}
+              components={{
+                block: {
+                  normal: ({ children }) => <p className="leading-loose text-black/65">{children}</p>,
+                },
+                marks: {
+                  link: ({ children, value }) => (
+                    <a
+                      href={value.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="font-medium text-black underline decoration-black/25 underline-offset-4 hover:decoration-black"
+                    >
+                      {children}
                     </a>
-                  </div>
-                ))}
-              </Marquee>
-              <div className="pointer-events-none opacity-0 md:opacity-100 absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
-              <div className="pointer-events-none opacity-0 md:opacity-100 absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
-            </div>
-            {/* {Logos.map((logo, index)=> (
-         <Tooltip key={index} delayDuration={0} >
-          <TooltipTrigger>
-            <a href={logo.url} target="_blank">
-               <Image
-            src={logo.logo}
-            width={100}
-            height={100}
-            alt={logo.imageAlt}
-            className="w-16  opacity-50 hover:opacity-100 transition-all duration-300"
-          />
-            </a>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>{logo.name}</p>
-          </TooltipContent>
-         </Tooltip>
-      ))} */}
+                  ),
+                },
+              }}
+            />
           </div>
         </div>
-        <div className="max-w-[1200px] w-full py-20 p-5">
-          <MainHomePage data={data.cardSection} />
-        </div>
-        <div className="w-full flex flex-col justify-center items-center element">
-          <div className="max-w-[1200px] w-full text-2xl space-y-5 text-neutral-500 font-medium tracking-tight py-40 p-5 ">
-            {/* <TextRevealByWord text="Tanisha's a blockchain whiz who's worked with top companies. Now she's ready to help yours!" /> */}
-            <div className="text-[21px] md:pr-3 scrollbar-track-transparent scrollbar-thumb-black/10 scrollbar-corner-red-600 !scrollbar-track-rounded-full !scrollbar-thumb-rounded-full !scrollbar-corner-rounded-full scrollbar-thin md:max-h-[600px] md:overflow-y-scroll text-white flex flex-col gap-10 py-5 font-normal">
-              <PortableText
-                components={{
-                  marks: {
-                    link: ({ children, value }) => (
-                      <LinkPreview url={value.href}>{children}</LinkPreview>
-                    )
-                  },
-                }}
-                value={data.text}
-              />
-            </div>
+      </section>
+
+      <div className="mx-auto w-full max-w-[1200px] px-5">
+        <Testimonials data={contactData} />
+      </div>
+
+      <section className="element border-t border-white/10">
+        <div className="mx-auto flex w-full max-w-[1200px] flex-col justify-between gap-8 px-5 py-16 md:flex-row md:items-center md:py-20">
+          <div>
+            <p className="text-sm font-semibold uppercase text-[#63E6BE]">Start a conversation</p>
+            <h2 className="mt-3 max-w-[720px] text-4xl font-semibold leading-tight text-white md:text-5xl">
+              Working through a difficult product, deployment, or mechanism question?
+            </h2>
           </div>
+          <a
+            href="https://calendly.com/tanisha-katara/office-hours-with-tanisha-katara"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md bg-white px-5 py-3 font-medium text-[#132331] transition-colors hover:bg-[#63E6BE]"
+          >
+            Schedule a call <BsArrowRight aria-hidden="true" />
+          </a>
         </div>
-        <div className="max-w-[1200px] w-full  p-5">
-          <MainHomePagePartTwo
-            contactData={contactData}
-            selectedWork={selectedWork}
-            data={data}
-          />
-        </div>
-      </main>
-    </TooltipProvider>
+      </section>
+    </main>
   );
 }

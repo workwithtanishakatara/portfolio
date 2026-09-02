@@ -1,101 +1,64 @@
 import { urlFor } from "@/lib/ImageUrl";
 import Link from "next/link";
-import React from "react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../ui/ToolTip";
-import Image from "next/image";
+
+const navigation = [
+  ["About", "/about"],
+  ["Speaking", "/speaking"],
+  ["Research", "/research"],
+  ["Work", "/work"],
+  ["Contact", "/contact"],
+];
 
 const Footer = ({ data }) => {
+  const socialLinks = data?.socialLinks?.socialLinks || [];
+
   return (
-    <footer className="flex element  flex-col justify-center items-center w-full ">
-      <div className="flex max-w-[1200px] w-full flex-col justify-center items-center py-10 px-5 ">
-        <div className="w-full pt-1 relative mb-20 flex flex-row justify-between items-center">
-          <div className="">
-            <Link href={"/"} className="font-semibold text-xl md:text-2xl">
+    <footer className="element flex w-full justify-center border-t border-white/10">
+      <div className="w-full max-w-[1200px] px-5 py-12">
+        <div className="flex flex-col justify-between gap-10 md:flex-row md:items-start">
+          <div>
+            <Link href="/" className="text-xl font-semibold md:text-2xl">
               Katara Consulting Group
             </Link>
+            <p className="mt-3 max-w-[420px] text-sm leading-relaxed text-white/60">
+              Product strategy, technical deployment, and mechanism design across AI systems and blockchain infrastructure.
+            </p>
           </div>
-          {/* <div className="xl:absolute w-fit xl:inline transition-all duration-500 hover:-rotate-[30deg] -translate-x-[30px] xl:-translate-x-[100px] top-0 cursor-pointer z-50 ">
-            <span className="font-semibold pointer-events-none select-none w-fit text-5xl">
-              T
-            </span>
-          </div> */}
-          <div className="hidden md:flex flex-row gap-[35px] text-lg">
-            <Link
-              className="hover:scale-110 text-lg transition-all"
-              href={"/about"}
-            >
-              About
-            </Link>
-            <Link
-              className="hover:scale-110 text-lg transition-all"
-              href={"/speaking"}
-            >
-              Speaking
-            </Link>
-            <Link
-              className="hover:scale-110 text-lg transition-all"
-              href={"/research"}
-            >
-              Research
-            </Link>
-            <Link
-              className="hover:scale-110 text-lg transition-all"
-              href={"/work"}
-            >
-              Work
-            </Link>
-            <Link
-              className="hover:scale-110 text-lg transition-all"
-              href={"/contact"}
-            >
-              Contact
-            </Link>
-          </div>
-        </div>
-        <div className="flex w-full flex-row justify-between gap-5 items-center">
-          <div>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <a
-                    target="_blank"
-                    href="https://www.linkedin.com/in/waleeddotdev/"
-                  >
-                    Developed by <span className="underline">Waleed</span>
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <div className="flex flex-col gap-2">
-                    <p> Looking for a website🚀 Contact Me!</p>
-                  </div>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
-          <div className="flex flex-row gap-2">
-            {data.socialLinks.socialLinks.map((link, index) => (
-              <Link target="_blank" href={link.link}>
-                <Image
-                  width={15}
-                  height={15}
-                  loading="lazy"
-                  className="size-[20px] invert"
-                  src={urlFor(link.icon).url()}
-                />
+
+          <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-7 gap-y-3">
+            {navigation.map(([label, href]) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-sm text-white/75 transition-colors hover:text-white"
+              >
+                {label}
               </Link>
             ))}
-          </div>
+          </nav>
         </div>
-        <div className="flex w-full flex-row justify-between gap-5 items-center">
-          <div>
-            <a target="_blank" href="https://www.linkedin.com/in/kanuri-pushyanth/">
-              PM'ed by <span className="underline">Pushyanth</span>
-            </a>
+
+        <div className="mt-12 flex flex-col justify-between gap-5 border-t border-white/10 pt-6 sm:flex-row sm:items-center">
+          <p className="text-xs text-white/45">
+            {new Date().getFullYear()} Tanisha Katara
+          </p>
+          <div className="flex flex-row gap-2">
+            {socialLinks.map((link, index) => (
+              <a
+                key={link._key || link.link || index}
+                target="_blank"
+                rel="noreferrer noopener"
+                href={link.link}
+                aria-label={`Open social profile ${index + 1}`}
+                className="flex size-9 items-center justify-center rounded-md border border-white/15 transition-colors hover:border-white/50 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                <img
+                  className="size-[18px] invert"
+                  src={urlFor(link.icon).url()}
+                  alt=""
+                />
+              </a>
+            ))}
           </div>
         </div>
       </div>

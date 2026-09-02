@@ -21,11 +21,12 @@ import { urlFor } from "@/lib/ImageUrl";
 import Image from "next/image";
 
 const WorkSearch = ({ data }) => {
+  const works = data?.works || [];
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [allCategories, setAllCategories] = useState([]);
   const [allSubCategories, setAllSubCategories] = useState([]);
   const [search, setSearch] = useState("");
-  const [filteredWorks, setFilteredWorks] = useState([]);
+  const [filteredWorks, setFilteredWorks] = useState(works);
   const [selectedTag, setSelectedTag] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
@@ -69,11 +70,11 @@ const WorkSearch = ({ data }) => {
 
     categories.add("All");
 
-    data.works.forEach((work) => {
-      work.group.forEach((group) => {
+    works.forEach((work) => {
+      (work.group || []).forEach((group) => {
         if (group.name) categories.add(group.name);
       });
-      work.subGroup.forEach((subGroup) => {
+      (work.subGroup || []).forEach((subGroup) => {
         if (subGroup.name) subCategories.add(subGroup.name);
       });
     });
@@ -91,11 +92,11 @@ const WorkSearch = ({ data }) => {
 
     setAllCategories(categoriesArray);
     setAllSubCategories(subCategoriesArray);
-  }, [data]);
+  }, [works]);
 
   useEffect(() => {
     // Filter works based on search and selected categories
-    let filtered = data.works;
+    let filtered = works;
 
     if (search) {
       filtered = filtered.filter((work) =>
@@ -105,9 +106,9 @@ const WorkSearch = ({ data }) => {
 
     if (selectedCategories.length > 0) {
       filtered = filtered.filter((work) => {
-        const workCategories = work.group
+        const workCategories = (work.group || [])
           .map((g) => g.name)
-          .concat(work.subGroup.map((sg) => sg.name));
+          .concat((work.subGroup || []).map((sg) => sg.name));
         return selectedCategories.every((cat) => workCategories.includes(cat));
       });
     }
@@ -116,19 +117,21 @@ const WorkSearch = ({ data }) => {
     if (selectedTag && selectedTag !== "All") {
       filtered = filtered.filter(
         (work) =>
-          work.group.some((g) => g.name === selectedTag) ||
-          work.subGroup.some((sg) => sg.name === selectedTag)
+          (work.group || []).some((g) => g.name === selectedTag) ||
+          (work.subGroup || []).some((sg) => sg.name === selectedTag)
       );
     }
 
     setFilteredWorks(filtered);
     setCurrentPage(1); // <--- THIS IS THE FIX: Reset page to 1 on filter change
-  }, [search, selectedCategories, selectedTag, data.works]);
+  }, [search, selectedCategories, selectedTag, works]);
 
   return (
     <div className="space-y-5">
       <div>
-        <p className="text-3xl font-semibold">{data.workText}</p>
+        <p className="text-3xl font-semibold">
+          Selected work across AI systems and blockchain infrastructure
+        </p>
       </div>
       <div className="space-y-5">
         <p className="text-sm text-neutral-500 tracking-normal">AREAS OF FOCUS</p>
@@ -225,63 +228,43 @@ const WorkSearch = ({ data }) => {
 export default WorkSearch;
 
 export const Card = ({ work }) => {
+  const imageSrc = work.imageUrl || (work.image ? urlFor(work.image).url() : null);
+
   return (
-    <div className="group h-[450px] w-full [perspective:1000px] ">
-      <div className="relative h-full w-full rounded-2xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-        {/* card front */}
-        <div className="absolute cursor-pointer bg-neutral-100 rounded-2xl inset-0 flex justify-center items-center p-5">
-          <div className="flex flex-col justify-center items-center gap-2 ">
-            <div className="size-32  flex  justify-center items-center">
-              <img
-                className="w-full rounded-xl object-cover"
-                src={work.imageUrl || urlFor(work.image).url()}
-                alt=""
-              />
-            </div>
-            <h1 className="text-xl text-center font-semibold select-none">
-              {work.title}
-            </h1>
-            <div className="flex flex-row justify-center items-center gap-2">
-              {work.group.map((group, index) => (
-                <p
-                  key={index}
-                  className="py-1 select-none px-1.5 bg-black rounded-lg text-white text-sm"
-                >
-                  {group.name}
-                </p>
-              ))}
-            </div>
-            <div className="flex w-full flex-wrap flex-row justify-center items-center gap-2">
-              {work.subGroup.map((subGroup, index) => (
-                <p
-                  key={index}
-                  className="py-1 select-none px-1.5 bg-white rounded-lg text-black text-sm"
-                >
-                  {subGroup.name}
-                </p>
-              ))}
-            </div>
-          </div>
+    <article className="flex h-full flex-col overflow-hidden rounded-md border border-black/10 bg-white">
+      {imageSrc && (
+        <img
+          className="aspect-[16/9] w-full border-b border-black/10 object-cover"
+          src={imageSrc}
+          alt=""
+          loading="lazy"
+        />
+      )}
+      <div className="flex flex-1 flex-col p-5">
+        <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs font-semibold uppercase text-black/45">
+          {(work.group || []).map((group, index) => (
+            <span key={group._id || group.name || index}>{group.name}</span>
+          ))}
+          {(work.subGroup || []).map((subGroup, index) => (
+            <span key={subGroup._id || subGroup.name || index}>{subGroup.name}</span>
+          ))}
         </div>
-        {/* card back  */}
-        <div className="absolute cursor-pointer inset-0 h-full w-full rounded-xl bg-gradient-to-b from-slate-100 to-violet-600 p-7 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
-          <div className="flex  min-h-full gap-2 flex-col items-start justify-center">
-            <p className="text-base select-none pt-10 tracking-normal leading-tight text-left">
-              {work.description}
-            </p>
-            {work?.link && (
-              <Link
-                target="_blank"
-                href={work.link}
-                className="font-bold select-none underline"
-              >
-                Read more
-              </Link>
-            )}
-          </div>
-        </div>
+        <h2 className="mt-3 text-xl font-semibold leading-tight">{work.title}</h2>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-black/60">
+          {work.description}
+        </p>
+        {work?.link && (
+          <Link
+            target="_blank"
+            rel="noreferrer noopener"
+            href={work.link}
+            className="mt-5 w-fit text-sm font-semibold underline decoration-black/25 underline-offset-4 hover:decoration-black"
+          >
+            Read more
+          </Link>
+        )}
       </div>
-    </div>
+    </article>
   );
 };
 
@@ -291,7 +274,9 @@ const Tags = ({ allCategories, selectedTag, setSelectedTag }) => {
   };
 
   useEffect(() => {
-    setSelectedTag(allCategories[0]);
+    if (allCategories.length > 0 && selectedTag === undefined) {
+      setSelectedTag(allCategories[0]);
+    }
   }, [allCategories]);
 
   return (

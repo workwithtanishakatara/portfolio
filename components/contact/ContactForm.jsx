@@ -57,7 +57,7 @@ const ContactForm = ({data}) => {
             <input
               disabled={isSubmitting}
               name="name" // Add name attribute
-              className="bg-slate-100 border border-slate-300/70 p-3 rounded-xl"
+              className="bg-slate-100 border border-slate-300/70 p-3 rounded-md"
               type="text"
               required
             />
@@ -65,7 +65,7 @@ const ContactForm = ({data}) => {
             <input
               disabled={isSubmitting}
               name="email" // Add name attribute
-              className="bg-slate-100 border border-slate-300/70 p-3 rounded-xl"
+              className="bg-slate-100 border border-slate-300/70 p-3 rounded-md"
               type="email"
               required
             />
@@ -73,7 +73,7 @@ const ContactForm = ({data}) => {
             <input
               disabled={isSubmitting}
               name="company" // Add name attribute
-              className="bg-slate-100 border border-slate-300/70 p-3 rounded-xl"
+              className="bg-slate-100 border border-slate-300/70 p-3 rounded-md"
               type="text"
               required
             />
@@ -82,13 +82,13 @@ const ContactForm = ({data}) => {
               disabled={isSubmitting}
               name="message" // Add name attribute
               rows={10}
-              className="bg-slate-100 border border-slate-300/70 !resize-none p-3 rounded-xl"
+              className="bg-slate-100 border border-slate-300/70 !resize-none p-3 rounded-md"
               required
             />
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-black mt-2 hover:bg-black/70 text-white p-3 rounded-xl"
+              className="bg-black mt-2 hover:bg-black/70 text-white p-3 rounded-md"
             >
               Submit
             </button>

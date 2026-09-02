@@ -1,99 +1,113 @@
 "use client";
+
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { FlipWords } from "../ui/flipingWord";
-import Icon from "../GraphSvg";
 import { BsArrowRight } from "react-icons/bs";
 
-const Header = ({ data, homeData }) => {
+const pageIntroductions = {
+  "/about": {
+    label: "About",
+    title: "Strategy grounded in how technical systems behave in practice.",
+    description:
+      "Tanisha works across AI deployment, blockchain infrastructure, product strategy, and mechanism design.",
+  },
+  "/work": {
+    label: "Work",
+    title: "Products, operating systems, and mechanisms built for real conditions.",
+    description:
+      "Selected client delivery, product launches, technical research, and open-source work across AI and blockchain.",
+  },
+  "/research": {
+    label: "Research",
+    title: "Independent research across agents, incentives, and institutions.",
+    description:
+      "Work on AI-agent coordination, identity and accountability, governance, validators, and crypto-economic systems.",
+  },
+  "/speaking": {
+    label: "Speaking",
+    title: "Making complex systems legible to technical and public audiences.",
+    description:
+      "Talks and workshops on AI-agent coordination, governance design, validators, privacy, and token economics.",
+  },
+  "/contact": {
+    label: "Contact",
+    title: "Bring the difficult problem, not a predetermined answer.",
+    description:
+      "For product, deployment, research, and strategy work across AI systems and blockchain infrastructure.",
+  },
+};
+
+const Header = () => {
   const pathname = usePathname();
 
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
+  if (pathname === "/") {
+    return (
+      <section className="element relative isolate w-full overflow-hidden border-t border-white/10">
+        <Image
+          src="/assets/opengraph-image.png"
+          alt="Tanisha Katara speaking on stage"
+          fill
+          priority
+          sizes="100vw"
+          className="hero-portrait object-cover"
+        />
+        <div className="absolute inset-0 bg-[#1B2A39]/88 md:hidden" />
+        <div className="absolute inset-y-0 left-0 hidden w-[64%] bg-[#1B2A39] md:block" />
 
-  useEffect(() => {
-    switch (pathname) {
-      case "/about":
-        setTitle(data["about"].title);
-        setDescription(data["about"].description);
-        break;
-      case "/":
-        setTitle("Home");
-        setDescription("");
-        break;
-      case "/research":
-        setTitle(data["writing"].title);
-        setDescription(data["writing"].description);
-        break;
-      case "/speaking":
-        setTitle(data["speaking"].title);
-        setDescription(data["speaking"].description);
-        break;
-      case "/contact":
-        setTitle(data["contact"].title);
-        setDescription(data["contact"].description);
-        break;
-      default:
-        setTitle("");
-        setDescription("");
-        break;
-    }
-  }, [pathname]);
+        <div className="relative mx-auto flex min-h-[560px] w-full max-w-[1200px] items-center px-5 py-16 md:min-h-[620px] md:py-20">
+          <div className="max-w-[700px]">
+            <p className="mb-5 text-sm font-semibold uppercase text-[#63E6BE]">
+              Founder, strategist, and technical operator
+            </p>
+            <h1 className="text-5xl font-semibold leading-[1.05] text-white md:text-7xl">
+              Tanisha Katara
+            </h1>
+            <p className="mt-6 max-w-[680px] text-2xl font-medium leading-snug text-white md:text-4xl">
+              AI systems and blockchain infrastructure that work in the real world.
+            </p>
+            <p className="mt-6 max-w-[620px] text-base leading-relaxed text-white/75 md:text-lg">
+              Product strategy, technical deployment, and mechanism design for teams building complex, high-stakes technology.
+            </p>
+
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link
+                href="/work"
+                className="inline-flex min-h-11 items-center gap-2 rounded-md bg-white px-5 py-3 font-medium text-[#132331] transition-colors hover:bg-[#63E6BE] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                Explore the work <BsArrowRight aria-hidden="true" />
+              </Link>
+              <Link
+                href="/research"
+                className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/60 px-5 py-3 font-medium text-white transition-colors hover:border-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                Read the research
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const introduction = pageIntroductions[pathname];
+
+  if (!introduction) return null;
 
   return (
-    <div className="element flex justify-center items-center w-full">
-      <div
-        style={{
-          display:
-            pathname === "/about" || pathname === "/" || pathname === "/work"
-              ? "none"
-              : "flex",
-        }}
-        className="px-5 py-10 justify-center items-center max-w-[1200px] w-full"
-      >
-        <div className="text-center flex flex-col justify-center items-center gap-5">
-          <p className="text-5xl font-semibold">{title}</p>
-          {description && (
-            <p className="max-w-[900px] text-center">{description}</p>
-          )}
-        </div>
+    <section className="element w-full border-t border-white/10">
+      <div className="mx-auto w-full max-w-[1200px] px-5 py-14 md:py-20">
+        <p className="text-sm font-semibold uppercase text-[#63E6BE]">
+          {introduction.label}
+        </p>
+        <h1 className="mt-4 max-w-[900px] text-4xl font-semibold leading-tight text-white md:text-6xl">
+          {introduction.title}
+        </h1>
+        <p className="mt-5 max-w-[760px] text-base leading-relaxed text-white/70 md:text-lg">
+          {introduction.description}
+        </p>
       </div>
-      <div
-        style={{
-          display: pathname === "/" ? "flex" : "none",
-        }}
-        className="px-5 py-20 justify-start items-start max-w-[1200px] w-full flex-col gap-1 text-2xl md:text-4xl tracking-tight leading-none font-medium"
-      >
-        <span className="text-2xl md:text-4xl tracking-tight  font-medium">
-          Tanisha Katara designs
-        </span>
-        <div className="relative w-full">
-          <FlipWords words={homeData?.words} />
-          <span className="ml-3">for blockchain protocols</span>
-        </div>
-        <span className="text-sm opacity-70 tracking-normal font-normal mt-5 max-w-[600px]">
-          She advises teams on how power, incentives, and coordination function under real conditions, before and after launch.
-        </span>
-        <div className="flex mt-5 flex-row gap-2">
-          <a
-            href="/work"
-            className="w-fit text-base font-normal tracking-normal z-50 flex flex-row gap-2 justify-center items-center h-fit px-4 py-2 border hover:bg-white hover:text-black transition-all duration-300 border-white rounded-full"
-          >
-            Case Studies <BsArrowRight size={20} />
-          </a>
-        </div>
-      </div>
-      {/* <div
-        style={{
-          display: pathname === "/work" ? "flex" : "none",
-        }}
-        className="py-20 flex-col justify-center items-center"
-      >
-        <div className="size-[300px] md:size-[400px] lg:size-[500px] justify-center items-center flex">
-          {pathname === "/work" && <Icon />}
-        </div>
-      </div> */}
-    </div>
+    </section>
   );
 };
 

@@ -3,6 +3,12 @@ import SpeakingVideoItem from "@/components/speaking/SpeakingVideoItem";
 import { fetchData } from "@/lib/FetchData";
 import React from "react";
 
+export const metadata = {
+  title: "Speaking",
+  description:
+    "Talks by Tanisha Katara on AI-agent coordination, blockchain governance, validators, privacy, and token economics.",
+};
+
 const page = async () => {
   // TODO: fetch data from sanity and display it here
 
@@ -14,7 +20,7 @@ const page = async () => {
     <main className="flex flex-col justify-center items-center">
       <div className="max-w-[1200px] w-full py-20 p-5">
         <div className="flex flex-row justify-center gap-5 items-center flex-wrap">
-          {data?.speakingEvents.reverse().map((event, index) => (
+          {[...(data?.speakingEvents || [])].reverse().map((event, index) => (
             <SpeakingVideoItem
               key={index}
               link={event.link}

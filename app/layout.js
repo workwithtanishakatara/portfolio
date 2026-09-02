@@ -14,23 +14,46 @@ const inter = Poppins({
 });
 
 export const metadata = {
-  title: "Tanisha Katara’s Website",
+  title: {
+    default: "Tanisha Katara | AI Systems and Blockchain Infrastructure",
+    template: "%s | Tanisha Katara",
+  },
   metadataBase: new URL("https://tanishakatara.com"),
   description:
-    "Katara Consulting Group (KCG) Blockchain governance strategist & researcher. Power distribution, staking design, and Al-driven coordination. Turning protocol complexity into resilient systems.",
-  other: {
-    keywords:
-      "Blockchain consultant, Governance, Blockchain governance, Web3 adoption, DAO tooling, Crypto payments Product management, Technical research, Polygon Technology, Juno Finance, Independent consultant, Blockchain expert, Layer2, Crypto-friendly neobank, Blockchain keynote speaker",
-  },
+    "Tanisha Katara works across AI deployment, product strategy, blockchain infrastructure, governance, validators, privacy, and mechanism design.",
+  keywords: [
+    "AI deployment strategist",
+    "AI product strategy",
+    "agentic AI",
+    "blockchain infrastructure",
+    "blockchain governance",
+    "token economics",
+    "technical consulting",
+    "Tanisha Katara",
+  ],
   other: {
     author: "Tanisha Katara",
   },
+  authors: [{ name: "Tanisha Katara", url: "https://tanishakatara.com" }],
   openGraph: {
     images: [
       {
-        url: `https://tanishakatara.com/assets/opengraph-image.png/?${Math.random() * 1000}`,
+        url: "/assets/opengraph-image-v2.png",
+        width: 1200,
+        height: 630,
+        alt: "Tanisha Katara speaking on AI systems and blockchain infrastructure",
       },
     ],
+    title: "Tanisha Katara | AI Systems and Blockchain Infrastructure",
+    description:
+      "Product strategy, technical deployment, and mechanism design across AI systems and blockchain infrastructure.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tanisha Katara | AI Systems and Blockchain Infrastructure",
+    description:
+      "Product strategy, technical deployment, and mechanism design across AI systems and blockchain infrastructure.",
+    images: ["/assets/opengraph-image-v2.png"],
   },
   applicationName: "Tanisha Katara",
   icons: {
@@ -58,10 +81,6 @@ export default async function RootLayout({ children }) {
     "https://9wlw9jiw.api.sanity.io/v2022-03-07/data/query/production?query=%7B%0A++%22about%22%3A+*%5B_type+%3D%3D+%22aboutPage%22%5D%7Btitle%2C+description%7D%5B0%5D%2C%0A++%22speaking%22%3A+*%5B_type+%3D%3D+%22speakPage%22%5D%7Btitle%2C+description%7D%5B0%5D%2C%0A++%22writing%22%3A+*%5B_type+%3D%3D+%22writingPage%22%5D%7Btitle%2C+description%7D%5B0%5D%2C%0A++++%22contact%22%3A+*%5B_type+%3D%3D+%22contactPage%22%5D%7Btitle%2C+description%7D%5B0%5D%2C%0A++%22socialLinks%22%3A+*%5B_type+%3D%3D+%22homePage%22%5D%7BsocialLinks%7D%5B0%5D%0A%7D%0A"
   );
 
-  const homeData = await fetchData(
-    "https://9wlw9jiw.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%22homePage%22%5D%5B0%5D%7B%0A++title%2C%0A++++words+%0A%7D"
-  );
-
   return (
     <html lang="en">
       <head>
@@ -83,11 +102,11 @@ export default async function RootLayout({ children }) {
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
       </head>
-      <body className={cn(inter.className, "!tracking-tight overflow-x-hidden")}>
-        <Navbar homeData={homeData} data={navbarData} />
+      <body className={cn(inter.className, "overflow-x-hidden")}>
+        <Navbar data={navbarData} />
         <Providers>{children}</Providers>
         <Footer data={navbarData} />
-        <div className="fixed bottom-0 right-0 z-50 p-10">
+        <div className="fixed bottom-0 right-0 z-40 hidden p-8 md:block">
           <CalendlyPopupNative
           buttonText={"Schedule a call"}
           url={"https://calendly.com/tanisha-katara/office-hours-with-tanisha-katara"}
