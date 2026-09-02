@@ -1,5 +1,6 @@
 import { fetchData } from "@/lib/FetchData";
 import { urlFor } from "@/lib/ImageUrl";
+import Marquee from "@/components/ui/InfiniteScroll";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
@@ -16,7 +17,7 @@ const Page = async () => {
     "https://9wlw9jiw.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%22aboutPage%22%5D%5B0%5D%7Bgallery%7D",
   );
 
-  const gallery = data?.gallery?.slice(0, 3) || [];
+  const gallery = data?.gallery || [];
 
   return (
     <main>
@@ -44,17 +45,19 @@ const Page = async () => {
 
       {gallery.length > 0 && (
         <section className="border-y border-black/10 bg-[#F4F7F6]">
-          <div className="mx-auto grid w-full max-w-[1200px] gap-4 px-5 py-10 sm:grid-cols-3 md:py-14">
-            {gallery.map((image, index) => (
-              <Image
-                key={image._key || index}
-                src={urlFor(image).width(900).height(700).url()}
-                width={900}
-                height={700}
-                alt={`Tanisha Katara speaking and working, image ${index + 1}`}
-                className="aspect-[4/3] w-full rounded-md object-cover"
-              />
-            ))}
+          <div className="relative mx-auto w-full max-w-[1400px] overflow-hidden py-10 md:py-14">
+            <Marquee pauseOnHover className="[--duration:42s]">
+              {gallery.map((image, index) => (
+                <Image
+                  key={image._key || index}
+                  src={urlFor(image).width(900).height(700).url()}
+                  width={900}
+                  height={700}
+                  alt={`Tanisha Katara speaking and working, image ${index + 1}`}
+                  className="mr-4 h-[260px] w-[360px] shrink-0 rounded-md object-cover md:h-[320px] md:w-[440px]"
+                />
+              ))}
+            </Marquee>
           </div>
         </section>
       )}

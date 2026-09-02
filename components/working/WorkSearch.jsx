@@ -234,7 +234,7 @@ export const Card = ({ work }) => {
     <article className="flex h-full flex-col overflow-hidden rounded-md border border-black/10 bg-white">
       {imageSrc && (
         <img
-          className="aspect-[16/9] w-full border-b border-black/10 object-cover"
+          className="h-[210px] w-full border-b border-black/10 bg-[#F4F7F6] object-contain p-7"
           src={imageSrc}
           alt=""
           loading="lazy"

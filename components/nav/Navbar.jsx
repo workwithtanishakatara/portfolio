@@ -6,40 +6,24 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { motion } from "framer-motion";
 import Header from "../speaking/Header";
+import { usePathname } from "next/navigation";
 import { urlFor } from "@/lib/ImageUrl";
 
 const Navbar = ({ data }) => {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const socialLinks = data?.socialLinks?.socialLinks || [];
 
   return (
     <nav className="flex element flex-col justify-center items-center w-full ">
-      <div className="flex max-w-[1200px] w-full flex-col justify-center items-center p-5 gap-1">
-        <div className="w-full hidden md:flex flex-row justify-end items-center gap-2">
-          {socialLinks.map((link, index) => (
-            <a
-              key={link._key || link.link || index}
-              target="_blank"
-              rel="noreferrer noopener"
-              href={link.link}
-              aria-label={`Open social profile ${index + 1}`}
-              className="flex size-8 items-center justify-center rounded-md transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
-            >
-              <img
-                className="size-[18px] invert"
-                src={urlFor(link.icon).url()}
-                alt=""
-              />
-            </a>
-          ))}
-        </div>
+      <div className="flex max-w-[1200px] w-full flex-col justify-center items-center px-5 py-5">
         <div className="w-full flex flex-row justify-between items-center">
           <div className="">
             <a href={"/"} className="font-semibold text-xl md:text-2xl">
               Katara Consulting Group
             </a>
           </div>
-          <div className="hidden md:flex flex-row items-center gap-[35px]">
+          <div className="hidden md:flex flex-row items-center gap-7">
             <Link
               className="hover:scale-110 text-lg transition-all"
               href={"/about"}
@@ -70,6 +54,24 @@ const Navbar = ({ data }) => {
             >
               Contact
             </Link>
+            <div className="ml-1 flex items-center gap-1 border-l border-white/15 pl-4">
+              {socialLinks.map((link, index) => (
+                <a
+                  key={link._key || link.link || index}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href={link.link}
+                  aria-label={`Open social profile ${index + 1}`}
+                  className="flex size-8 items-center justify-center rounded-md transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+                >
+                  <img
+                    className="size-[17px] invert"
+                    src={urlFor(link.icon).url()}
+                    alt=""
+                  />
+                </a>
+              ))}
+            </div>
           </div>
           <button
             type="button"
@@ -84,7 +86,7 @@ const Navbar = ({ data }) => {
           </button>
         </div>
       </div>
-      <Header />
+      {pathname === "/" && <Header />}
       <motion.div
         initial={{ x: "100%" }}
         animate={{ x: open ? 0 : "100%" }}

@@ -32,22 +32,11 @@ body{
     /* animation: color-cycle 20s infinite; */
   }
 
-.hero-portrait {
-  object-position: 74% center;
-}
-
 ::selection {
   background: #63e6be;
   color: #132331;
 }
 
-@media (max-width: 767px) {
-  .hero-portrait {
-    object-position: 100% center;
-    opacity: 0.58;
-  }
-}
-  
   @keyframes color-cycle {
     0% { background-color: #eff8ff; } 
     15% { background-color: #f1f7ff; }  

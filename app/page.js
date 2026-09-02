@@ -1,7 +1,7 @@
 import Testimonials from "@/components/Testimonials";
+import Marquee from "@/components/ui/InfiniteScroll";
 import { fetchData } from "@/lib/FetchData";
 import { urlFor } from "@/lib/ImageUrl";
-import { PortableText } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
@@ -49,6 +49,25 @@ const cacheLinks = {
   github: "https://github.com/Tanisha-Katara/cacheeconomics",
 };
 
+const mediaLinks = [
+  ["AI Interview", "https://dailyai.com/da/2024/05/interview-tanisha-katara-blockchain-and-web3-strategist/"],
+  ["Crypto India Magazine", "https://narrative-issue1.aflip.in/f035cd48d0.html"],
+  ["Blockchain Reporter", "https://blockchainreporter.net/from-dao-power-struggles-to-ai-agent-coordination/"],
+  ["CryptoSlate", "https://cryptoslate.com/ethereum-bots-are-burning-over-50-of-gas-fees-so-eth-now-needs-privacy-just-to-scale/"],
+  ["The Defiant", "https://thedefiant.io/news/markets/why-bitcoin-crashed-over-10-in-one-week"],
+  ["CryptoNews", "https://cryptonews.com/reports/ethereum-in-a-bloodbath-analysts-expect-a-lost-month-for-eth-price/"],
+  ["Blockcast", "https://www.blockhead.co/2026/03/03/blockcast-86-licensed-to-shill-designing-decentralization-governance-power-and-the-validator-problem/"],
+  ["Cryptotendencias", "https://www.criptotendencias.com/base-de-conocimiento/codigo-consenso-y-credibilidad-repensando-el-poder-en-web3/"],
+];
+
+const researchLinks = [
+  ["Governance and Vote Escrow", "https://paragraph.com/@polygon-governance/JnmIX4ReBP1HZRgI4GB0"],
+  ["MoltBook AI Agents Consensus", "https://github.com/Tanisha-Katara/MoltbookGovernanceAnalysis/blob/main/prevoutput/consensus_report.md"],
+  ["Capital Concentration in Blockchain Economies", "https://tanisha-katara.github.io/validator-paper-academic/"],
+  ["Every AI Agent Will Need a Passport", "https://crypto.news/every-ai-agent-will-need-a-passport-opinion/"],
+  ["Multi Asset Consensus for Web3 Security", "https://tanisha-katara.github.io/avail-fusion-whitepaper/"],
+];
+
 function ExternalLink({ href, children, icon: Icon = FiExternalLink }) {
   return (
     <a
@@ -67,13 +86,13 @@ function WorkPreview({ work }) {
 
   return (
     <article className="border-t border-black/15 py-7">
-      <div className="grid gap-6 md:grid-cols-[180px_1fr]">
+      <div className="grid gap-6 md:grid-cols-[140px_1fr]">
         {image && (
           <img
             src={image}
             alt=""
             loading="lazy"
-            className="h-[150px] w-full rounded-md object-cover"
+            className="h-[120px] w-full rounded-md border border-black/10 bg-white object-contain p-3"
           />
         )}
         <div>
@@ -115,8 +134,6 @@ export default async function Home() {
     "https://9wlw9jiw.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%22contactPage%22%5D%5B0%5D",
   );
 
-  const publicProof = data?.text?.slice(2) || [];
-
   return (
     <main>
       <section className="border-b border-black/10 bg-white">
@@ -136,29 +153,31 @@ export default async function Home() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto w-full max-w-[1200px] px-5 py-16 md:py-20">
+        <div className="mx-auto w-full max-w-[1200px] py-14 md:py-16">
           <p className="text-center text-sm font-semibold uppercase text-black/45">
             Protocols and organizations advised
           </p>
-          <div className="mt-9 grid grid-cols-3 items-center gap-x-8 gap-y-10 sm:grid-cols-4 md:grid-cols-8">
-            {logos.map(([name, href, logo]) => (
-              <a
-                key={name}
-                href={href}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label={name}
-                className="flex h-12 items-center justify-center opacity-45 grayscale transition hover:opacity-100 hover:grayscale-0 focus-visible:opacity-100"
-              >
-                <Image
-                  src={logo}
-                  width={110}
-                  height={56}
-                  alt={`${name} logo`}
-                  className="max-h-11 w-auto object-contain"
-                />
-              </a>
-            ))}
+          <div className="relative mt-9 w-full overflow-hidden">
+            <Marquee className="[--duration:24s]">
+              {logos.map(([name, href, logo]) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={name}
+                  className="mr-14 flex h-14 w-[130px] shrink-0 items-center justify-center opacity-45 grayscale transition hover:opacity-100 hover:grayscale-0 focus-visible:opacity-100"
+                >
+                  <Image
+                    src={logo}
+                    width={120}
+                    height={56}
+                    alt={`${name} logo`}
+                    className="max-h-11 max-w-[120px] object-contain"
+                  />
+                </a>
+              ))}
+            </Marquee>
           </div>
         </div>
       </section>
@@ -219,7 +238,7 @@ export default async function Home() {
           <div className="flex items-end justify-between gap-5 pb-7">
             <div>
               <p className="text-sm font-semibold uppercase text-black/45">Selected work</p>
-              <h2 className="mt-3 text-4xl font-semibold md:text-5xl">Research that ships. Products that hold up.</h2>
+              <h2 className="mt-3 max-w-[760px] text-3xl font-semibold md:text-4xl">Research that ships. Products that hold up.</h2>
             </div>
             <Link
               href="/work"
@@ -241,38 +260,38 @@ export default async function Home() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto grid w-full max-w-[1200px] gap-10 px-5 py-16 md:grid-cols-[0.7fr_1.3fr] md:py-24">
-          <div>
-            <p className="text-sm font-semibold uppercase text-black/45">Public record</p>
-            <h2 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">
-              Research, media, and ideas in public.
-            </h2>
-            <div className="mt-6 flex gap-5 text-sm font-semibold">
+        <div className="mx-auto w-full max-w-[1200px] px-5 py-16 md:py-20">
+          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <div>
+              <p className="text-sm font-semibold uppercase text-black/45">Public record</p>
+              <h2 className="mt-3 text-3xl font-semibold md:text-4xl">Research and ideas in public.</h2>
+            </div>
+            <div className="flex gap-5 text-sm font-semibold">
               <Link href="/research" className="underline underline-offset-4">Research</Link>
               <Link href="/speaking" className="underline underline-offset-4">Speaking</Link>
             </div>
           </div>
-          <div className="public-proof space-y-7 border-t border-black/15 pt-7 md:border-l md:border-t-0 md:pl-10 md:pt-0">
-            <PortableText
-              value={publicProof}
-              components={{
-                block: {
-                  normal: ({ children }) => <p className="leading-loose text-black/65">{children}</p>,
-                },
-                marks: {
-                  link: ({ children, value }) => (
-                    <a
-                      href={value.href}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="font-medium text-black underline decoration-black/25 underline-offset-4 hover:decoration-black"
-                    >
-                      {children}
-                    </a>
-                  ),
-                },
-              }}
-            />
+          <div className="mt-9 grid gap-10 border-t border-black/15 pt-8 md:grid-cols-2 md:gap-16">
+            <div>
+              <h3 className="text-sm font-semibold uppercase text-black/45">Featured in</h3>
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
+                {mediaLinks.map(([label, href]) => (
+                  <a key={label} href={href} target="_blank" rel="noreferrer noopener" className="text-sm font-medium underline decoration-black/20 underline-offset-4 hover:decoration-black md:text-base">
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold uppercase text-black/45">Research published</h3>
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
+                {researchLinks.map(([label, href]) => (
+                  <a key={label} href={href} target="_blank" rel="noreferrer noopener" className="text-sm font-medium underline decoration-black/20 underline-offset-4 hover:decoration-black md:text-base">
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

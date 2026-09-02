@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import Providers from "@/components/ProgressBar";
 import { fetchData } from "@/lib/FetchData";
 import Script from "next/script";
-import CalendlyPopupNative from "@/components/ui/CalendlyPopupNative";
 
 const inter = Poppins({
   subsets: ["latin"],
@@ -106,12 +105,6 @@ export default async function RootLayout({ children }) {
         <Navbar data={navbarData} />
         <Providers>{children}</Providers>
         <Footer data={navbarData} />
-        <div className="fixed bottom-0 right-0 z-40 hidden p-8 md:block">
-          <CalendlyPopupNative
-          buttonText={"Schedule a call"}
-          url={"https://calendly.com/tanisha-katara/office-hours-with-tanisha-katara"}
-          />
-        </div>
       </body>
     </html>
   );
