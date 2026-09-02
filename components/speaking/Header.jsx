@@ -1,20 +1,32 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 
 const Header = () => {
   return (
-    <section className="element w-full border-t border-white/10">
-      <div className="mx-auto flex min-h-[460px] w-full max-w-[1200px] items-center px-5 py-16 md:min-h-[500px] md:py-20">
-        <div className="max-w-[920px]">
+    <section className="element relative isolate w-full overflow-hidden border-t border-white/10">
+      <div className="hero-photo absolute inset-y-0 right-0 w-[82%] md:w-[56%]">
+        <Image
+          src="/assets/hero-speaking.jpg"
+          alt="Tanisha Katara speaking at EthCC"
+          fill
+          priority
+          sizes="(max-width: 767px) 82vw, 56vw"
+          className="object-cover object-[48%_center]"
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto flex min-h-[500px] w-full max-w-[1200px] items-center px-5 py-16 md:min-h-[520px] md:py-20">
+        <div className="max-w-[660px]">
           <p className="mb-5 text-sm font-semibold uppercase text-[#63E6BE]">
             Founder, strategist, and technical operator
           </p>
           <h1 className="text-5xl font-semibold leading-[1.05] text-white md:text-6xl">
             Tanisha Katara
           </h1>
-          <p className="mt-6 max-w-[840px] text-2xl font-medium leading-snug text-white md:text-4xl">
+          <p className="mt-6 max-w-[650px] text-2xl font-medium leading-snug text-white md:text-4xl">
             AI systems and blockchain infrastructure that work in the real world.
           </p>
           <p className="mt-6 max-w-[620px] text-base leading-relaxed text-white/75 md:text-lg">
