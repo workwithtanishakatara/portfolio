@@ -97,38 +97,36 @@ function PressCard({ feature, size = "stacked", onSelect }) {
     wide: "md:h-[412px] md:w-[460px]",
     stacked: "md:h-[200px] md:w-[320px]",
   }[size];
-  const titleSize = size === "stacked" ? "md:line-clamp-3 md:text-[17px]" : "md:text-[22px]";
-  const captionPadding = size === "stacked" ? "md:p-4" : "md:p-5";
+  const titleSize = size === "stacked" ? "md:text-[15px]" : "md:text-lg";
+  const captionHeight = size === "stacked" ? "md:min-h-[84px] md:p-3" : "md:min-h-[112px] md:p-4";
 
   return (
     <button
       type="button"
       onClick={() => onSelect(feature)}
-      className={`group relative h-[320px] w-[82vw] max-w-[360px] shrink-0 snap-center overflow-hidden rounded-md border border-black/15 bg-[#E9ECEB] text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:max-w-none ${desktopSize}`}
+      className={`group relative flex h-[320px] w-[82vw] max-w-[360px] shrink-0 snap-center flex-col overflow-hidden rounded-md border border-black/15 bg-white text-left transition-shadow duration-300 hover:shadow-[0_18px_45px_rgba(0,0,0,0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:max-w-none ${desktopSize}`}
       aria-label={`Expand ${feature.publication}: ${feature.title}`}
     >
-      <Image
-        src={feature.image}
-        alt=""
-        fill
-        sizes={size === "feature" ? "(min-width: 768px) 500px, 82vw" : "(min-width: 768px) 460px, 82vw"}
-        className={`${feature.imageClass} ${feature.imageBackground || ""} transition-transform duration-700 ease-out group-hover:scale-[1.04] group-focus-visible:scale-[1.04]`}
-      />
-      <span className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent" aria-hidden="true" />
-      <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-black/35 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
-        <FiMaximize2 aria-hidden="true" />
+      <span className={`relative block min-h-0 flex-1 overflow-hidden bg-[#E9ECEB] ${feature.imageBackground || ""}`}>
+        <Image
+          src={feature.image}
+          alt=""
+          fill
+          sizes={size === "feature" ? "(min-width: 768px) 500px, 82vw" : "(min-width: 768px) 460px, 82vw"}
+          className={`${feature.imageClass} transition-transform duration-700 ease-out group-hover:scale-[1.04] group-focus-visible:scale-[1.04]`}
+        />
+        <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-white/50 bg-black/45 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+          <FiMaximize2 aria-hidden="true" />
+        </span>
       </span>
-      <span className={`absolute inset-x-0 bottom-0 block p-5 text-white ${captionPadding}`}>
-        <span className="mb-2 flex items-center gap-2 text-[11px] font-semibold uppercase text-white/75">
+      <span className={`block min-h-[104px] shrink-0 border-t border-black/10 p-4 text-black ${captionHeight}`}>
+        <span className="mb-2 flex items-center gap-2 text-[10px] font-semibold uppercase text-black/45">
           <span>{feature.publication}</span>
           <span aria-hidden="true">/</span>
           <span>{feature.year}</span>
         </span>
-        <span className={`block max-w-[430px] text-xl font-semibold leading-tight ${titleSize}`}>
+        <span className={`line-clamp-2 block max-w-[430px] text-lg font-semibold leading-tight ${titleSize}`}>
           {feature.title}
-        </span>
-        <span className={`mt-2 block text-xs font-medium text-white/70 ${size === "stacked" ? "md:hidden" : ""}`}>
-          {feature.type}
         </span>
       </span>
     </button>

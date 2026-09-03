@@ -2,7 +2,6 @@ import Testimonials from "@/components/Testimonials";
 import PressShowcase from "@/components/home/PressShowcase";
 import Marquee from "@/components/ui/InfiniteScroll";
 import { fetchData } from "@/lib/FetchData";
-import { urlFor } from "@/lib/ImageUrl";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
@@ -51,11 +50,31 @@ const cacheLinks = {
 };
 
 const researchLinks = [
-  ["Governance and Vote Escrow", "https://paragraph.com/@polygon-governance/JnmIX4ReBP1HZRgI4GB0"],
-  ["MoltBook AI Agents Consensus", "https://github.com/Tanisha-Katara/MoltbookGovernanceAnalysis/blob/main/prevoutput/consensus_report.md"],
-  ["Capital Concentration in Blockchain Economies", "https://tanisha-katara.github.io/validator-paper-academic/"],
-  ["Every AI Agent Will Need a Passport", "https://crypto.news/every-ai-agent-will-need-a-passport-opinion/"],
-  ["Multi Asset Consensus for Web3 Security", "https://tanisha-katara.github.io/avail-fusion-whitepaper/"],
+  {
+    title: "Governance and Vote Escrow",
+    area: "Governance design",
+    href: "https://paragraph.com/@polygon-governance/JnmIX4ReBP1HZRgI4GB0",
+  },
+  {
+    title: "MoltBook AI Agents Consensus",
+    area: "AI-agent coordination",
+    href: "https://github.com/Tanisha-Katara/MoltbookGovernanceAnalysis/blob/main/prevoutput/consensus_report.md",
+  },
+  {
+    title: "Capital Concentration in Blockchain Economies",
+    area: "Network economics",
+    href: "https://tanisha-katara.github.io/validator-paper-academic/",
+  },
+  {
+    title: "Every AI Agent Will Need a Passport",
+    area: "Identity and accountability",
+    href: "https://crypto.news/every-ai-agent-will-need-a-passport-opinion/",
+  },
+  {
+    title: "Multi Asset Consensus for Web3 Security",
+    area: "Crypto-economic security",
+    href: "https://tanisha-katara.github.io/avail-fusion-whitepaper/",
+  },
 ];
 
 function ExternalLink({ href, children, icon: Icon = FiExternalLink }) {
@@ -71,21 +90,14 @@ function ExternalLink({ href, children, icon: Icon = FiExternalLink }) {
   );
 }
 
-function WorkPreview({ work }) {
-  const image = work.image ? urlFor(work.image).width(900).height(560).url() : null;
-
+function WorkPreview({ work, index }) {
   return (
-    <article className="border-t border-black/15 py-7">
-      <div className="grid gap-6 md:grid-cols-[140px_1fr]">
-        {image && (
-          <img
-            src={image}
-            alt=""
-            loading="lazy"
-            className="h-[120px] w-full rounded-md border border-black/10 bg-white object-contain p-3"
-          />
-        )}
-        <div>
+    <article className="group border-t border-black/15 py-8 last:border-b">
+      <div className="grid gap-3 md:grid-cols-[76px_1fr] md:gap-8">
+        <p className="pt-1 text-xs font-semibold tabular-nums text-black/35">
+          {String(index + 1).padStart(2, "0")}
+        </p>
+        <div className="max-w-[860px]">
           <div className="mb-3 flex flex-wrap gap-x-3 gap-y-1 text-xs font-semibold uppercase text-black/50">
             {(work.group || []).map((group) => (
               <span key={group._id || group.name}>{group.name}</span>
@@ -100,7 +112,7 @@ function WorkPreview({ work }) {
               href={work.link}
               target="_blank"
               rel="noreferrer noopener"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline decoration-black/30 underline-offset-4 hover:decoration-black"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline decoration-black/30 underline-offset-4 transition-[gap] hover:gap-3 hover:decoration-black"
             >
               View project <FiExternalLink aria-hidden="true" />
             </a>
@@ -230,7 +242,9 @@ export default async function Home() {
           <div className="flex items-end justify-between gap-5 pb-7">
             <div>
               <p className="text-sm font-semibold uppercase text-black/45">Selected work</p>
-              <h2 className="mt-3 max-w-[760px] text-3xl font-semibold md:text-4xl">Research that ships. Products that hold up.</h2>
+              <h2 className="mt-3 max-w-[760px] text-3xl font-semibold leading-tight md:text-4xl">
+                Product launches, technical research, and governance systems.
+              </h2>
             </div>
             <Link
               href="/work"
@@ -239,8 +253,8 @@ export default async function Home() {
               View all <BsArrowRight aria-hidden="true" />
             </Link>
           </div>
-          {(selectedWork?.works || []).map((work) => (
-            <WorkPreview key={work.title} work={work} />
+          {(selectedWork?.works || []).map((work, index) => (
+            <WorkPreview key={work.title} work={work} index={index} />
           ))}
           <Link
             href="/work"
@@ -253,37 +267,72 @@ export default async function Home() {
 
       <section className="bg-white">
         <div className="mx-auto w-full max-w-[1200px] px-5 py-16 md:py-20">
-          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div className="grid gap-10 md:grid-cols-[0.72fr_1.28fr] md:gap-20">
             <div>
               <p className="text-sm font-semibold uppercase text-black/45">Public record</p>
-              <h2 className="mt-3 text-3xl font-semibold md:text-4xl">Research and ideas in public.</h2>
-            </div>
-            <div className="flex gap-5 text-sm font-semibold">
-              <Link href="/research" className="underline underline-offset-4">Research</Link>
-              <Link href="/speaking" className="underline underline-offset-4">Speaking</Link>
-            </div>
-          </div>
-          <div className="mt-9 grid gap-10 border-t border-black/15 pt-8 md:grid-cols-[1.25fr_0.75fr] md:gap-16">
-            <div>
-              <h3 className="text-sm font-semibold uppercase text-black/45">Research published</h3>
-              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
-                {researchLinks.map(([label, href]) => (
-                  <a key={label} href={href} target="_blank" rel="noreferrer noopener" className="text-sm font-medium underline decoration-black/20 underline-offset-4 hover:decoration-black md:text-base">
-                    {label}
-                  </a>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold uppercase text-black/45">Speaking</h3>
-              <p className="mt-4 max-w-[420px] text-sm leading-relaxed text-black/60 md:text-base">
-                Selected talks and panels on AI-agent coordination, governance design, validators, privacy, and token economics.
+              <h2 className="mt-3 max-w-[420px] text-4xl font-semibold leading-tight md:text-5xl">
+                Research and ideas in public.
+              </h2>
+              <p className="mt-5 max-w-[390px] leading-relaxed text-black/55">
+                Published research and open-source work across AI agents, governance, validators, and crypto-economic systems.
               </p>
-              <Link href="/speaking" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline decoration-black/20 underline-offset-4 hover:decoration-black">
-                Browse speaking record <BsArrowRight aria-hidden="true" />
+              <Link
+                href="/research"
+                className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-md border border-black/20 px-4 py-2 text-sm font-medium transition-colors hover:border-black hover:bg-black hover:text-white"
+              >
+                Explore all research <BsArrowRight aria-hidden="true" />
               </Link>
             </div>
+            <div className="border-t border-black/20">
+              {researchLinks.map((research, index) => (
+                <a
+                  key={research.title}
+                  href={research.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="group grid min-h-[104px] grid-cols-[38px_1fr_auto] items-center gap-3 border-b border-black/15 py-5 transition-[background-color,padding] duration-300 hover:bg-[#F4F7F6] hover:px-4 focus-visible:bg-[#F4F7F6] focus-visible:px-4 focus-visible:outline-none md:grid-cols-[52px_1fr_auto]"
+                >
+                  <span className="self-start pt-1 text-xs font-semibold tabular-nums text-black/35">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span>
+                    <span className="block text-xs font-semibold uppercase text-[#087F5B]">{research.area}</span>
+                    <span className="mt-2 block text-lg font-semibold leading-snug md:text-xl">{research.title}</span>
+                  </span>
+                  <FiExternalLink className="mr-1 text-lg text-black/35 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-black" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
           </div>
+
+          <Link
+            href="/speaking"
+            className="group mt-12 grid overflow-hidden border-y border-black/20 transition-colors duration-300 hover:bg-[#1B2A39] hover:text-white focus-visible:bg-[#1B2A39] focus-visible:text-white focus-visible:outline-none md:grid-cols-[260px_1fr_auto] md:items-stretch"
+          >
+            <span className="relative block h-[190px] overflow-hidden md:h-full md:min-h-[190px]">
+              <Image
+                src="/assets/hero-speaking.jpg"
+                alt="Tanisha Katara speaking at EthCC"
+                fill
+                sizes="(min-width: 768px) 260px, 100vw"
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+            </span>
+            <span className="block px-5 py-7 md:px-8 md:py-8">
+              <span className="text-xs font-semibold uppercase text-[#087F5B] transition-colors group-hover:text-[#63E6BE]">Speaking</span>
+              <span className="mt-3 block max-w-[620px] text-2xl font-semibold leading-tight md:text-3xl">
+                Talks, panels, and workshops.
+              </span>
+              <span className="mt-3 block max-w-[620px] text-sm leading-relaxed text-black/55 transition-colors group-hover:text-white/65 md:text-base">
+                Talks and panels on AI-agent coordination, governance design, validators, privacy, and token economics.
+              </span>
+            </span>
+            <span className="flex items-center px-5 pb-7 md:px-8 md:pb-0">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full border border-current transition-transform duration-300 group-hover:translate-x-1">
+                <BsArrowRight aria-hidden="true" />
+              </span>
+            </span>
+          </Link>
         </div>
       </section>
 
