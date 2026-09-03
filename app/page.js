@@ -1,4 +1,5 @@
 import Testimonials from "@/components/Testimonials";
+import PressShowcase from "@/components/home/PressShowcase";
 import Marquee from "@/components/ui/InfiniteScroll";
 import { fetchData } from "@/lib/FetchData";
 import { urlFor } from "@/lib/ImageUrl";
@@ -48,17 +49,6 @@ const cacheLinks = {
   essay: "https://commodiverus388593.substack.com/p/cache-economics-how-to-stop-paying",
   github: "https://github.com/Tanisha-Katara/cacheeconomics",
 };
-
-const mediaLinks = [
-  ["AI Interview", "https://dailyai.com/da/2024/05/interview-tanisha-katara-blockchain-and-web3-strategist/"],
-  ["Crypto India Magazine", "https://narrative-issue1.aflip.in/f035cd48d0.html"],
-  ["Blockchain Reporter", "https://blockchainreporter.net/from-dao-power-struggles-to-ai-agent-coordination/"],
-  ["CryptoSlate", "https://cryptoslate.com/ethereum-bots-are-burning-over-50-of-gas-fees-so-eth-now-needs-privacy-just-to-scale/"],
-  ["The Defiant", "https://thedefiant.io/news/markets/why-bitcoin-crashed-over-10-in-one-week"],
-  ["CryptoNews", "https://cryptonews.com/reports/ethereum-in-a-bloodbath-analysts-expect-a-lost-month-for-eth-price/"],
-  ["Blockcast", "https://www.blockhead.co/2026/03/03/blockcast-86-licensed-to-shill-designing-decentralization-governance-power-and-the-validator-problem/"],
-  ["Cryptotendencias", "https://www.criptotendencias.com/base-de-conocimiento/codigo-consenso-y-credibilidad-repensando-el-poder-en-web3/"],
-];
 
 const researchLinks = [
   ["Governance and Vote Escrow", "https://paragraph.com/@polygon-governance/JnmIX4ReBP1HZRgI4GB0"],
@@ -182,6 +172,8 @@ export default async function Home() {
         </div>
       </section>
 
+      <PressShowcase />
+
       <section className="border-y border-black/10 bg-[#F4F7F6]">
         <div className="mx-auto w-full max-w-[1200px] px-5 py-16 md:py-24">
           <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
@@ -271,17 +263,7 @@ export default async function Home() {
               <Link href="/speaking" className="underline underline-offset-4">Speaking</Link>
             </div>
           </div>
-          <div className="mt-9 grid gap-10 border-t border-black/15 pt-8 md:grid-cols-2 md:gap-16">
-            <div>
-              <h3 className="text-sm font-semibold uppercase text-black/45">Featured in</h3>
-              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
-                {mediaLinks.map(([label, href]) => (
-                  <a key={label} href={href} target="_blank" rel="noreferrer noopener" className="text-sm font-medium underline decoration-black/20 underline-offset-4 hover:decoration-black md:text-base">
-                    {label}
-                  </a>
-                ))}
-              </div>
-            </div>
+          <div className="mt-9 grid gap-10 border-t border-black/15 pt-8 md:grid-cols-[1.25fr_0.75fr] md:gap-16">
             <div>
               <h3 className="text-sm font-semibold uppercase text-black/45">Research published</h3>
               <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
@@ -291,6 +273,15 @@ export default async function Home() {
                   </a>
                 ))}
               </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold uppercase text-black/45">Speaking</h3>
+              <p className="mt-4 max-w-[420px] text-sm leading-relaxed text-black/60 md:text-base">
+                Selected talks and panels on AI-agent coordination, governance design, validators, privacy, and token economics.
+              </p>
+              <Link href="/speaking" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline decoration-black/20 underline-offset-4 hover:decoration-black">
+                Browse speaking record <BsArrowRight aria-hidden="true" />
+              </Link>
             </div>
           </div>
         </div>

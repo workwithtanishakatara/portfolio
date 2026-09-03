@@ -25,6 +25,15 @@ body{
     flex-direction: column;
 }
 
+.press-viewport {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.press-viewport::-webkit-scrollbar {
+  display: none;
+}
+
 .element {
     background-color: #1B2A39;
     color: #ffffff;
