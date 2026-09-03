@@ -26,25 +26,6 @@ const metrics = [
   ["2M+ users", "Reached through the Polygon Governance Hub"],
 ];
 
-const practices = [
-  {
-    label: "AI systems",
-    color: "#087F5B",
-    title: "From model capability to useful workflow.",
-    description:
-      "Agent workflows, identity and accountability, LLM cost economics, technical discovery, evaluation logic, and deployment strategy.",
-    examples: "cacheeconomics, Ethereum governance AI, Moltbook consensus research, and AI-agent identity research.",
-  },
-  {
-    label: "Blockchain infrastructure",
-    color: "#E03131",
-    title: "From mechanism design to live operation.",
-    description:
-      "Governance, validators, staking, privacy, payments, treasury systems, protocol launches, and crypto-economic design.",
-    examples: "Filecoin, Polygon, Avail, Mina, Aragon, Juno, Ethereum, and early-stage infrastructure teams.",
-  },
-];
-
 const cacheLinks = {
   essay: "https://commodiverus388593.substack.com/p/cache-economics-how-to-stop-paying",
   github: "https://github.com/Tanisha-Katara/cacheeconomics",
@@ -202,34 +183,6 @@ export default async function Home() {
       </section>
 
       <PressShowcase />
-
-      <section className="border-y border-black/10 bg-[#F4F7F6]">
-        <div className="mx-auto w-full max-w-[1200px] px-5 py-16 md:py-24">
-          <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
-            <div>
-              <p className="text-sm font-semibold uppercase text-black/45">The practice</p>
-              <h2 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">
-                Two technical domains. One way of working.
-              </h2>
-              <p className="mt-5 max-w-[500px] leading-relaxed text-black/60">
-                Start with the actual workflow, incentives, and constraints. Then design the product, mechanism, or operating model that can survive contact with users.
-              </p>
-            </div>
-            <div className="grid gap-8 sm:grid-cols-2">
-              {practices.map((practice) => (
-                <article key={practice.label} className="border-t-4 pt-5" style={{ borderColor: practice.color }}>
-                  <p className="text-sm font-semibold uppercase" style={{ color: practice.color }}>
-                    {practice.label}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-semibold leading-tight">{practice.title}</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-black/65">{practice.description}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-black/45">{practice.examples}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="bg-white">
         <div className="mx-auto w-full max-w-[1200px] px-5 py-16 md:py-24">
