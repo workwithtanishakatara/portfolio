@@ -92,33 +92,35 @@ function ExternalLink({ href, children, icon: Icon = FiExternalLink }) {
 
 function WorkPreview({ work, index }) {
   return (
-    <article className="group border-t border-black/15 py-8 last:border-b">
-      <div className="grid gap-3 md:grid-cols-[76px_1fr] md:gap-8">
-        <p className="pt-1 text-xs font-semibold tabular-nums text-black/35">
+    <article
+      className={`group flex flex-col py-6 md:min-h-[250px] md:px-6 md:py-7 md:first:pl-0 md:last:pr-0 ${
+        index > 0 ? "border-t border-black/15 md:border-l md:border-t-0" : ""
+      }`}
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] font-semibold uppercase text-black/45">
+          {(work.group || []).map((group) => (
+            <span key={group._id || group.name}>{group.name}</span>
+          ))}
+        </div>
+        <p className="shrink-0 text-xs font-semibold tabular-nums text-black/30">
           {String(index + 1).padStart(2, "0")}
         </p>
-        <div className="max-w-[860px]">
-          <div className="mb-3 flex flex-wrap gap-x-3 gap-y-1 text-xs font-semibold uppercase text-black/50">
-            {(work.group || []).map((group) => (
-              <span key={group._id || group.name}>{group.name}</span>
-            ))}
-          </div>
-          <h3 className="text-2xl font-semibold leading-tight">{work.title}</h3>
-          <p className="mt-3 max-w-[680px] text-sm leading-relaxed text-black/65 md:text-base">
-            {work.description}
-          </p>
-          {work.link && (
-            <a
-              href={work.link}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline decoration-black/30 underline-offset-4 transition-[gap] hover:gap-3 hover:decoration-black"
-            >
-              View project <FiExternalLink aria-hidden="true" />
-            </a>
-          )}
-        </div>
       </div>
+      <h3 className="mt-5 text-xl font-semibold leading-tight md:text-[22px]">{work.title}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-black/60 md:line-clamp-3">
+        {work.description}
+      </p>
+      {work.link && (
+        <a
+          href={work.link}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="mt-5 inline-flex items-center gap-2 self-start text-sm font-semibold underline decoration-black/30 underline-offset-4 transition-[gap] hover:gap-3 hover:decoration-black md:mt-auto md:pt-5"
+        >
+          View project <FiExternalLink aria-hidden="true" />
+        </a>
+      )}
     </article>
   );
 }
@@ -238,13 +240,13 @@ export default async function Home() {
       </section>
 
       <section className="border-y border-black/10 bg-[#FAFAF9]">
-        <div className="mx-auto w-full max-w-[1200px] px-5 py-16 md:py-24">
-          <div className="flex items-end justify-between gap-5 pb-7">
+        <div className="mx-auto w-full max-w-[1200px] px-5 py-12 md:py-16">
+          <div className="flex items-end justify-between gap-5 pb-6">
             <div>
-              <p className="text-sm font-semibold uppercase text-black/45">Selected work</p>
-              <h2 className="mt-3 max-w-[760px] text-3xl font-semibold leading-tight md:text-4xl">
+              <h2 className="text-3xl font-semibold leading-tight md:text-4xl">Selected work</h2>
+              <p className="mt-2 text-sm text-black/55 md:text-base">
                 Product launches, technical research, and governance systems.
-              </h2>
+              </p>
             </div>
             <Link
               href="/work"
@@ -253,9 +255,11 @@ export default async function Home() {
               View all <BsArrowRight aria-hidden="true" />
             </Link>
           </div>
-          {(selectedWork?.works || []).map((work, index) => (
-            <WorkPreview key={work.title} work={work} index={index} />
-          ))}
+          <div className="grid border-y border-black/15 md:grid-cols-3">
+            {(selectedWork?.works || []).map((work, index) => (
+              <WorkPreview key={work.title} work={work} index={index} />
+            ))}
+          </div>
           <Link
             href="/work"
             className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md border border-black/20 px-4 py-2 text-sm font-medium sm:hidden"
